@@ -1,0 +1,107 @@
+Dictionnaire de données 
+
+Nom : usr_firstname
+Type : Varchar
+Taille : 40,0
+Commentaire : 
+
+Nom : usr_id
+Type : Auto_increment
+Taille : 100,0
+Commentaire : 
+
+Nom : usr_lastname
+Type : Varchar
+Taille : 40,0
+Commentaire : 
+
+Nom : usr_login
+Type : Varchar
+Taille : 40,0
+Commentaire : 
+
+Nom : usr_password
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : usr_key
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : prod_id
+Type : Auto_increment
+Taille : 250,0
+Commentaire : 
+
+Nom : prod_ref
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : prod_name
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : prod_cat
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : prod_desc
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : prod_state
+Type : Varchar
+Taille : 15,0
+Commentaire : 
+
+Nom : prod_qty
+Type : Int
+Taille : 10,0
+Commentaire : 
+
+Nom : prov_id
+Type : Auto_increment
+Taille : 250,0
+Commentaire : 
+
+Nom : prov_ref
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : prov_name
+Type : Varchar
+Taille : 40,0
+Commentaire : 
+
+Nom : prov_type
+Type : Varchar
+Taille : 20,0
+Commentaire : 
+
+Nom : prov_phone
+Type : Int
+Taille : 40,0
+Commentaire : 
+
+Nom : prod_picture
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : faulty_qty
+Type : Int
+Taille : 250,0
+Commentaire : 
+
+Nom : buy_qty
+Type : Int
+Taille : 250,0
+Commentaire : 
+

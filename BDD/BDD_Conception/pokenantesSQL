@@ -1,0 +1,77 @@
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
+
+
+#------------------------------------------------------------
+# Table: User
+#------------------------------------------------------------
+
+CREATE TABLE User(
+        usr_id        int (11) Auto_increment  NOT NULL ,
+        usr_firstname Varchar (40) NOT NULL ,
+        usr_lastname  Varchar (40) NOT NULL ,
+        usr_login     Varchar (40) NOT NULL ,
+        usr_password  Varchar (250) NOT NULL ,
+        usr_key       Varchar (250) NOT NULL ,
+        PRIMARY KEY (usr_id )
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+#------------------------------------------------------------
+# Table: Produit
+#------------------------------------------------------------
+
+CREATE TABLE Produit(
+        prod_id      int (11) Auto_increment  NOT NULL ,
+        prod_ref     Varchar (250) NOT NULL ,
+        prod_name    Varchar (250) NOT NULL ,
+        prod_cat     Varchar (250) NOT NULL ,
+        prod_desc    Varchar (250) NOT NULL ,
+        prod_state   Varchar (15) NOT NULL ,
+        prod_picture Varchar (250) NOT NULL ,
+        PRIMARY KEY (prod_id )
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+#------------------------------------------------------------
+# Table: Fournisseur
+#------------------------------------------------------------
+
+CREATE TABLE Fournisseur(
+        prov_id    int (11) Auto_increment  NOT NULL ,
+        prov_ref   Varchar (20) NOT NULL ,
+        prov_name  Varchar (40) NOT NULL ,
+        prov_type  Varchar (20) NOT NULL ,
+        prov_phone Int NOT NULL ,
+        PRIMARY KEY (prov_id )
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+#------------------------------------------------------------
+# Table: Enlever
+#------------------------------------------------------------
+
+CREATE TABLE Enlever(
+        faulty_qty Int NOT NULL ,
+        usr_id     Int NOT NULL ,
+        prod_id    Int NOT NULL ,
+        PRIMARY KEY (usr_id ,prod_id )
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+#------------------------------------------------------------
+# Table: Vendre
+#------------------------------------------------------------
+
+CREATE TABLE Vendre(
+        buy_qty Int NOT NULL ,
+        prod_id Int NOT NULL ,
+        prov_id Int NOT NULL ,
+        PRIMARY KEY (prod_id ,prov_id )
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE Enlever ADD CONSTRAINT FK_Enlever_usr_id FOREIGN KEY (usr_id) REFERENCES User(usr_id);
+ALTER TABLE Enlever ADD CONSTRAINT FK_Enlever_prod_id FOREIGN KEY (prod_id) REFERENCES Produit(prod_id);
+ALTER TABLE Vendre ADD CONSTRAINT FK_Vendre_prod_id FOREIGN KEY (prod_id) REFERENCES Produit(prod_id);
+ALTER TABLE Vendre ADD CONSTRAINT FK_Vendre_prov_id FOREIGN KEY (prov_id) REFERENCES Fournisseur(prov_id);
