@@ -105,13 +105,3 @@ Type : Int
 Taille : 250,0
 Commentaire : 
 
-Nom : buy_qty
-Type : Int
-Taille : 250,0
-Commentaire : 
-
-Nom : faulty_qty
-Type : Int
-Taille : 250,0
-Commentaire : 
-
