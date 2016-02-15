@@ -82,7 +82,7 @@ Global
 </XPD:OBJ>
 <XPD:OBJ name="OwnedViews[3]" type="UMLUseCaseView" guid="BVaFuUeKZ0Gb4GEe85wbGgAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
-<XPD:ATTR name="FillColor" type="string">$000006FF</XPD:ATTR>
+<XPD:ATTR name="FillColor" type="string">$002F2FFF</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">200</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">180</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">121</XPD:ATTR>
@@ -192,7 +192,7 @@ Global
 </XPD:OBJ>
 <XPD:OBJ name="OwnedViews[7]" type="UMLUseCaseView" guid="0tG5HZ/Hhkefh2L9SGSRUAAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
-<XPD:ATTR name="FillColor" type="string">$000006FF</XPD:ATTR>
+<XPD:ATTR name="FillColor" type="string">$002F2FFF</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">188</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">88</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">142</XPD:ATTR>
@@ -678,7 +678,7 @@ Global
 </XPD:OBJ>
 <XPD:OBJ name="OwnedViews[21]" type="UMLUseCaseView" guid="ihFLmJLVpkG8o/KWkjLBEQAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
-<XPD:ATTR name="FillColor" type="string">clRed</XPD:ATTR>
+<XPD:ATTR name="FillColor" type="string">$002F2FFF</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">508</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">88</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">127</XPD:ATTR>
@@ -1354,7 +1354,7 @@ Global
 </XPD:OBJ>
 <XPD:OBJ name="OwnedViews[1]" type="UMLClassView" guid="t96a26xPpk+BJUeJzszCcAAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
-<XPD:ATTR name="FillColor" type="string">clRed</XPD:ATTR>
+<XPD:ATTR name="FillColor" type="string">$004F57FF</XPD:ATTR>
 <XPD:ATTR name="FontFace" type="string">Franklin Gothic Demi</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">432</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">97</XPD:ATTR>
@@ -4593,7 +4593,7 @@ Global
 <XPD:ATTR name="Top" type="integer">8</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">201</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">53</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">L'utilisateur sera loger.
+<XPD:ATTR name="Text" type="string">L'utilisateur sera logué.
 La base de données accessible depuis
 le navigateur.
 </XPD:ATTR>
@@ -5357,7 +5357,7 @@ le navigateur.
 <XPD:ATTR name="Top" type="integer">4</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">201</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">53</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">L'utilisateur sera loger.
+<XPD:ATTR name="Text" type="string">L'utilisateur sera logué.
 La base de données accessible depuis
 le navigateur.
 </XPD:ATTR>
