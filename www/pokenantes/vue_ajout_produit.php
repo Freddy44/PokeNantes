@@ -3,7 +3,7 @@
 	<head>
 		<title>Vue ajout produit</title>
 		<meta charset="utf-8" />
-		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="view/css/bootstrap.css" rel="stylesheet">
 		<script src="js/bootstrap.min.js"></script>
 	</head>
 	<body>
