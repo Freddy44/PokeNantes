@@ -9,7 +9,7 @@
 	<body>
 		<header>
 			<h1>Bienvenue sur</h1>
-			<img src="view/img/logo.png" alt="logo"/>		
+			<img src="img/logo.png" alt="logo"/>		
 		</header>
 
 		<main>
@@ -33,6 +33,7 @@
 				</div>
 			</form>
 		</main>
+
 		<footer>
 			<h5>crédit : imie 2016 POEC PHP</h5>
 		</footer>

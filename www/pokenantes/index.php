@@ -3,7 +3,7 @@
 	<head>
 		<title>Bienvenue</title>
 		<meta charset="utf-8" />
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="view/css/bootstrap.css" rel="stylesheet">
 		<script src="js/bootstrap.min.js"></script>
 	</head>
 	<body>
@@ -11,7 +11,7 @@
 		<main>
 			<nav>
 				<div>
-					<img src="img/logo.png" alt="logo"/>
+					<img src="view/img/logo.png" alt="logo"/>
 				</div>
 				<div>
 				    <ul>

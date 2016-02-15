@@ -3,7 +3,7 @@
 	<head>
 		<title>Vue ajout produit</title>
 		<meta charset="utf-8" />
-		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<script src="js/bootstrap.min.js"></script>
 	</head>
 	<body>
@@ -11,7 +11,7 @@
 		<main>
 			<nav>
 				<div>
-					<img src="view/img/logo.png" alt="logo"/>
+					<img src="img/logo.png" alt="logo"/>
 				</div>
 				<div>
 				    <ul>
