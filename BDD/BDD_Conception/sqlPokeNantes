@@ -30,6 +30,7 @@ CREATE TABLE Product(
         prod_desc    Varchar (250) NOT NULL ,
         prod_state   Varchar (15) NOT NULL ,
         prod_picture Varchar (250) NOT NULL ,
+        prod_qty     Int NOT NULL ,
         PRIMARY KEY (prod_id )
 )ENGINE=InnoDB;
 
@@ -53,7 +54,7 @@ CREATE TABLE Provider(
 #------------------------------------------------------------
 
 CREATE TABLE Manage(
-        faulty_qty Int NOT NULL ,
+        manage_qty Int NOT NULL ,
         usr_id     Int NOT NULL ,
         prod_id    Int NOT NULL ,
         PRIMARY KEY (usr_id ,prod_id )
@@ -65,9 +66,9 @@ CREATE TABLE Manage(
 #------------------------------------------------------------
 
 CREATE TABLE Provide(
-        buy_qty Int NOT NULL ,
-        prod_id Int NOT NULL ,
-        prov_id Int NOT NULL ,
+        provide_qty Int NOT NULL ,
+        prod_id     Int NOT NULL ,
+        prov_id     Int NOT NULL ,
         PRIMARY KEY (prod_id ,prov_id )
 )ENGINE=InnoDB;
 
