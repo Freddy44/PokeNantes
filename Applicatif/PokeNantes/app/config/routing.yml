@@ -1,0 +1,5 @@
+nos_bundles_product:
+    resource: "@NosBundlesProductBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
