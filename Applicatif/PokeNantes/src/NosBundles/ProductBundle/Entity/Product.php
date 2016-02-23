@@ -17,49 +17,49 @@ class Product
      *
      * @ORM\Column(name="prod_ref", type="string", length=250, nullable=false)
      */
-    private $prodRef;
+    protected $prodRef;
 
     /**
      * @var string
      *
      * @ORM\Column(name="prod_name", type="string", length=250, nullable=false)
      */
-    private $prodName;
+    protected $prodName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="prod_cat", type="string", length=250, nullable=false)
      */
-    private $prodCat;
+    protected $prodCat;
 
     /**
      * @var string
      *
      * @ORM\Column(name="prod_desc", type="string", length=250, nullable=false)
      */
-    private $prodDesc;
+    protected $prodDesc;
 
     /**
      * @var string
      *
      * @ORM\Column(name="prod_state", type="string", length=15, nullable=false)
      */
-    private $prodState;
+    protected $prodState;
 
     /**
      * @var string
      *
      * @ORM\Column(name="prod_picture", type="string", length=250, nullable=false)
      */
-    private $prodPicture;
+    protected $prodPicture;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="prod_qty", type="integer", nullable=false)
      */
-    private $prodQty;
+    protected $prodQty;
 
     /**
      * @var integer
@@ -68,7 +68,7 @@ class Product
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $prodId;
+    protected $prodId;
 	
 	/**
 	 *

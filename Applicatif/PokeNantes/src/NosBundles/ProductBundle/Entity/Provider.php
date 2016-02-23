@@ -17,28 +17,28 @@ class Provider
      *
      * @ORM\Column(name="prov_ref", type="string", length=20, nullable=false)
      */
-    private $provRef;
+    protected  $provRef;
 
     /**
      * @var string
      *
      * @ORM\Column(name="prov_name", type="string", length=40, nullable=false)
      */
-    private $provName;
+    protected $provName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="prov_type", type="string", length=20, nullable=false)
      */
-    private $provType;
+    protected $provType;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="prov_phone", type="integer", nullable=false)
      */
-    private $provPhone;
+    protected $provPhone;
 
     /**
      * @var integer
@@ -47,7 +47,98 @@ class Provider
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $provId;
+    protected $provId;
+	
+	/**
+	 *
+	 * @return the string
+	 */
+	public function getProvRef() {
+		return $this->provRef;
+	}
+	
+	/**
+	 *
+	 * @param
+	 *        	$provRef
+	 */
+	public function setProvRef($provRef) {
+		$this->provRef = $provRef;
+		return $this;
+	}
+	
+	/**
+	 *
+	 * @return the string
+	 */
+	public function getProvName() {
+		return $this->provName;
+	}
+	
+	/**
+	 *
+	 * @param
+	 *        	$provName
+	 */
+	public function setProvName($provName) {
+		$this->provName = $provName;
+		return $this;
+	}
+	
+	/**
+	 *
+	 * @return the string
+	 */
+	public function getProvType() {
+		return $this->provType;
+	}
+	
+	/**
+	 *
+	 * @param
+	 *        	$provType
+	 */
+	public function setProvType($provType) {
+		$this->provType = $provType;
+		return $this;
+	}
+	
+	/**
+	 *
+	 * @return the integer
+	 */
+	public function getProvPhone() {
+		return $this->provPhone;
+	}
+	
+	/**
+	 *
+	 * @param
+	 *        	$provPhone
+	 */
+	public function setProvPhone($provPhone) {
+		$this->provPhone = $provPhone;
+		return $this;
+	}
+	
+	/**
+	 *
+	 * @return the integer
+	 */
+	public function getProvId() {
+		return $this->provId;
+	}
+	
+	/**
+	 *
+	 * @param
+	 *        	$provId
+	 */
+	public function setProvId($provId) {
+		$this->provId = $provId;
+		return $this;
+	}
+	
 
     
 }
