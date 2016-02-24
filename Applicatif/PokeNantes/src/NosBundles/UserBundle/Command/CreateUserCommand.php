@@ -4,12 +4,18 @@ namespace NosBundles\UserBundle\Command;
 
 //use FOS\UserBundle\Command\CreateUserCommand as BaseCommand;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand as BaseCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use FOS\UserBundle\Model\User;
+/*
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use FOS\UserBundle\Command\CreateUserCommand as BaseCommand;*/
 
 /**
 * @author Matthieu Bontemps <matthieu@knplabs.com>
@@ -29,25 +35,23 @@ use FOS\UserBundle\Model\User;
  * @src: http://blog.overnetcity.com/2012/10/15/symfony2-fosuserbundle-comment-etendre-la-commande-par-defaut-de-creation-dun-utilisateur/
  *
 */
-class CreateUserCommand extends ContainerAwareCommand
+class CreateUserCommand extends BaseCommand
 {
-   /**
-    * @see Command
-    */
-   protected function configure()
-   {
-       $this
-           ->setName('fos:user:create')
-           ->setDescription('Create a user.')
-           ->setDefinition(array(
-               new InputArgument('username', InputArgument::REQUIRED, 'The username'),
-               new InputArgument('email', InputArgument::REQUIRED, 'The email'),
-               new InputArgument('password', InputArgument::REQUIRED, 'The password'),
-               new InputArgument('name', InputArgument::REQUIRED, 'The name'),
-               new InputOption('super-admin', null, InputOption::VALUE_NONE, 'Set the user as super admin'),
-               new InputOption('inactive', null, InputOption::VALUE_NONE, 'Set the user as inactive'),
-           ))
-           ->setHelp(<<<EOT
+    /**
+     * @see Command
+     */
+    protected function configure()
+    {
+        parent::configure();
+        $this
+            ->setName('NosBundles:UserBundle:user:create')
+            ->getDefinition()->addArguments(array(
+                new InputArgument('firstname', InputArgument::REQUIRED, 'The firstname'),
+                new InputArgument('lastname', InputArgument::REQUIRED, 'The lastname')
+            ))
+        ;
+        $this->setHelp(<<<EOT
+// L'aide qui va bien
 The <info>fos:user:create</info> command creates a user:
    <info>php app/console fos:user:create matthieu</info>
 This interactive shell will ask you for an email and then a password.
@@ -63,106 +67,76 @@ You can create an inactive user (will not be able to log in):
  <info>php app/console fos:user:create thibault --inactive</info>
 
 EOT
-           );
-   }
+            );
+    }
 
-   /**
-    * @see Command
-    */
-   protected function execute(InputInterface $input, OutputInterface $output)
-   {
-      $firsname       = $input->getArgument('firstname');
-      $lastname       = $input->getArgument('lastname');
-      $username       = $input->getArgument('username');
-      //$email      = $input->getArgument('email');
-      $password       = $input->getArgument('password');
-      $inactive       = $input->getOption('inactive');
-      $superadmin     = $input->getOption('super-admin');
+    /**
+     * @see Command
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $firstname  = $input->getArgument('firstname');
+        $lastname   = $input->getArgument('lastname');
+        $username   = $input->getArgument('username');
+        $email      = $input->getArgument('email');
+        $password   = $input->getArgument('password');
+        $inactive   = $input->getOption('inactive');
+        $superadmin = $input->getOption('super-admin');
 
-      $manipulator = $this->getContainer()->get('userbundle.util.user_manipulator');
-      $manipulator->create($username, $password, $email, $name, !$inactive, $superadmin);
+        /** @var \FOS\UserBundle\Model\UserManager $user_manager */
+        $user_manager = $this->getContainer()->get('fos_user.user_manager');
 
-       $output->writeln(sprintf('Created user <comment>%s</comment>', $username));
-   }
+        /** @var \Acme\AcmeUserBundle\Entity\User $user */
+        $user = $user_manager->createUser();
+        $user->setUsername($username);
+        $user->setEmail($email);
+        $user->setPlainPassword($password);
+        $user->setEnabled((Boolean) !$inactive);
+        $user->setSuperAdmin((Boolean) $superadmin);
+        $user->setFirstName($firstname);
+        $user->setLastName($lastname);
 
-   /**
-    * @see Command
-    */
-   protected function interact(InputInterface $input, OutputInterface $output)
-   {
-       if (!$input->getArgument('username')) {
-           $username = $this->getHelper('dialog')->askAndValidate(
-               $output,
-               'Please choose a username:',
-               function($username) {
-                   if (empty($username)) {
-                       throw new \Exception('Username can not be empty');
-                   }
+        $user_manager->updateUser($user);
 
-                   return $username;
-               }
-           );
-           $input->setArgument('username', $username);
-       }
+        $manipulator = $this->getContainer()->get('userbundle.util.user_manipulator');
+        $manipulator->setFirstName($firstname);
+        $manipulator->setLastName($lastname);
+        $manipulator->create($username, $password, $email, $name, !$inactive, $superadmin);
 
-       /*if (!$input->getArgument('email')) {
-           $email = $this->getHelper('dialog')->askAndValidate(
-               $output,
-               'Please choose an email:',
-               function($email) {
-                   if (empty($email)) {
-                       throw new \Exception('Email can not be empty');
-                   }
+        $output->writeln(sprintf('Created user <comment>%s</comment>', $username));
+    }
 
-                   return $email;
-               }
-           );
-           $input->setArgument('email', $email);
-       }*/
+    protected function interact(InputInterface $input, OutputInterface $output)
+    {
+        parent::interact($input, $output);
+        if (!$input->getArgument('firstname')) {
+            $firstname = $this->getHelper('dialog')->askAndValidate(
+                $output,
+                'Please choose a firstname:',
+                function($firstname) {
+                    if (empty($firstname)) {
+                        throw new \Exception('Firstname can not be empty');
+                    }
 
-       if (!$input->getArgument('password')) {
-           $password = $this->getHelper('dialog')->askAndValidate(
-               $output,
-               'Please choose a password:',
-               function($password) {
-                   if (empty($password)) {
-                       throw new \Exception('Password can not be empty');
-                   }
+                    return $firstname;
+                }
+            );
+            $input->setArgument('firstname', $firstname);
+        }
+        if (!$input->getArgument('lastname')) {
+            $lastname = $this->getHelper('dialog')->askAndValidate(
+                $output,
+                'Please choose a lastname:',
+                function($lastname) {
+                    if (empty($lastname)) {
+                        throw new \Exception('Lastname can not be empty');
+                    }
 
-                   return $password;
-               }
-           );
-           $input->setArgument('password', $password);
-       }
-
-       if (!$input->getArgument('firstname')) {
-           $firsname = $this->getHelper('dialog')->askAndValidate(
-               $output,
-               'Please choose a firsname:',
-               function($firsname) {
-                   if (empty($firsname)) {
-                       throw new \Exception('Firstname can not be empty');
-                   }
-
-                   return $firstname;
-               }
-           );
-           $input->setArgument('firstname', $name);
-       }
-
-       if (!$input->getArgument('lastname')) {
-           $lastname = $this->getHelper('dialog')->askAndValidate(
-               $output,
-               'Please choose a lastname:',
-               function($lastname) {
-                   if (empty($lastname)) {
-                       throw new \Exception('Lastname can not be empty');
-                   }
-
-                   return $lastname;
-               }
-           );
-           $input->setArgument('lastname', $lastname);
-       }
-   }
- }
+                    return $lastname;
+                }
+            );
+            $input->setArgument('lastname', $lastname);
+        }
+    }
+    // ...
+}
