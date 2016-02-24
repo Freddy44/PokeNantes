@@ -69,6 +69,25 @@ class Product
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $prodId;
+    
+    /**
+     * Bidirectional
+     *
+     * @ORM\ManyToMany(targetEntity="Provider", inversedBy="ProductsList")
+     * @ORM\JoinTable(name="provide",
+     *   joinColumns={@ORM\JoinColumn(name="prod_id", referencedColumnName="prod_id")},
+     *   inverseJoinColumns={@ORM\JoinColumn(name="prov_id", referencedColumnName="prov_id")}
+     * )
+     */
+    protected $ProvidersList;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+    	$this->ProvidersList = new \Doctrine\Common\Collections\ArrayCollection();
+    }    
 	
 	/**
 	 *
@@ -214,6 +233,36 @@ class Product
 		return $this;
 	}
 	
+    /**
+     * Add ProvidersList
+     *
+     * @param \NosBundles\ProductBundle\Entity\Provider $providersList
+     * @return Product
+     */
+    public function addProvidersList(\NosBundles\ProductBundle\Entity\Provider $providersList)
+    {
+        $this->ProvidersList[] = $providersList;
 
+        return $this;
+    }
 
+    /**
+     * Remove ProvidersList
+     *
+     * @param \NosBundles\ProductBundle\Entity\Provider $providersList
+     */
+    public function removeProvidersList(\NosBundles\ProductBundle\Entity\Provider $providersList)
+    {
+        $this->ProvidersList->removeElement($providersList);
+    }
+
+    /**
+     * Get ProvidersList
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProvidersList()
+    {
+        return $this->ProvidersList;
+    }
 }
