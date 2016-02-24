@@ -7,3 +7,14 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    user.form.registration:
+        class: NosBundle\UserBundle\Form\UserType
+        tags:
+            - { name: form.type, alias: userbundle_user_registration }
+
+    #https://github.com/FriendsOfSymfony/FOSUserBundle/issues/2048
+    #Fix problem 'non-existent service "fos_user.doctrine_registry"''
+    fos_user.doctrine_registry:
+        alias: doctrine
+
+    

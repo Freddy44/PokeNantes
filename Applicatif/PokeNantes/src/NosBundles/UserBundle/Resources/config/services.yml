@@ -1,0 +1,7 @@
+services:
+#    nos_bundles_user.example:
+#        class: NosBundles\UserBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+    userbundle.util.user_manipulator:
+        class:      NosBundles\UserBundle\Util\UserManipulator
+        arguments:  [@fos_user.user_manager]

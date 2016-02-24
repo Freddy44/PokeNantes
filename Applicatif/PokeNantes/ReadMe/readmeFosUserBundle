@@ -1,0 +1,30 @@
+src: https://symfony.com/doc/1.3.x/bundles/FOSUserBundle/index.html
+
+Pour pouvoir utiliser la partie user, il faut taper en ligne de commande
+à la racine du dossier:
+  $ composer require friendsofsymfony/user-bundle "~2.0@dev"
+
+Pour avoir un visuel:
+  http://localhost/versVotreProjet/web/app_dev.php/login
+
+Récupérer et utiliser l'utilisateur dans une action avec Symfony2:
+
+  L'utilisateur est stocké en session, dans le contexte de l'application. Mais récupérer celui-ci sous forme d'objet dans
+  une action peut vite devenir un casse-tête, bien que cela soit utile dans de nombreuses situations.
+  Voici une bonne façon de faire :
+  $user = $this->container->get('security.context')->getToken()->getUser();
+
+  Vous pouvez ensuite manipuler cet objet comme bon vous semble et récupérer vos attributs nouvellement créés :
+
+  $user->getlocation();
+
+php app/console
+  ...
+  fos
+   fos:user:activate                    Activate a user
+   fos:user:change-password             Change the password of a user.
+   fos:user:create                      Create a user.
+   fos:user:deactivate                  Deactivate a user
+   fos:user:demote                      Demote a user by removing a role
+   fos:user:promote                     Promotes a user by adding a role
+  ...
