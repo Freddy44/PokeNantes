@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 ﻿Fred: Ici c'est ma ligne
 <<<<<<< HEAD
-Marine : Ici aussi c’est ma ligne :)
 =======
-Vinc : Coucou
->>>>>>> origin/master
+Fred: Ici c'est ma ligne
 
-Vinc : Nouveau test
+>>>>>>> origin/master
+Marine : Ici aussi c’est ma ligne :)
+
+Vinc : Coucou
+
+cyril : test de merge
