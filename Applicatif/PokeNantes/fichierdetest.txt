@@ -1,17 +1,1 @@
-<<<<<<< HEAD
-ï»¿Fred: Ici c'est ma ligne
-<<<<<<< HEAD
-=======
-Fred: Ici c'est ma ligne
-<<<<<<< HEAD
-
->>>>>>> origin/master
-Marine : Ici aussi câ€™est ma ligne :)
-
-Vinc : Coucou
-
-cyril : test de merge
-=======
-Vinc : Coucou
-Vinc : test git2
->>>>>>> refs/remotes/origin/vincent
+J'ai écrasé tout le monde...

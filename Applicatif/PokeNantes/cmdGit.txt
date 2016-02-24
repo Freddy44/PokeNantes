@@ -19,6 +19,3 @@ Les branch :
 	Merger sa branch :
 		git checkout master
 		git merge maBranch
-	Effacer branche :
-		git branch -d nomBranche
-
