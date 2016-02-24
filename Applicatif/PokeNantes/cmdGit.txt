@@ -1,0 +1,21 @@
+Commande Git :
+
+git pull
+git status
+git commit -m « mon message »
+git push
+
+
+Les branch :
+
+	créer la branch :
+		git branch test
+ 	basculer vers une autre branch :
+		git checkout laBranch
+
+	créer une branche et y basculer tout de suite :
+		git checkout -b maBranch
+
+	Merger sa branch :
+		git checkout master
+		git merge maBranch
