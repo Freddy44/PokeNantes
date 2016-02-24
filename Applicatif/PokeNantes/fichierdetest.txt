@@ -1,2 +1,6 @@
 Fred: Ici c'est ma ligne
+<<<<<<< HEAD
 Marine : Ici aussi c’est ma ligne :)
+=======
+Vinc : Coucou
+>>>>>>> origin/master
