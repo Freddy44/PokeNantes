@@ -1,1 +1,2 @@
 Fred: Ici c'est ma ligne
+Marine : Ici aussi c’est ma ligne :)
