@@ -1,1 +1,2 @@
 Fred: Ici c'est ma ligne
+Vinc : Coucou
