@@ -1,1 +1,2 @@
 Fred: Ici c'est ma ligne
+cyril : ici c'est la mienne, oui la mienne
