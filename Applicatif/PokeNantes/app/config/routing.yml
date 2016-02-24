@@ -8,5 +8,10 @@ nos_bundles_product:
     type:     annotation
     prefix:   /
 
+<<<<<<< HEAD
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+=======
+_user_bundle:
+    resource: "@NosBundlesUserBundle/Resources/config/routing.yml"
+>>>>>>> 6b77fbef3eb4ddf8a1814b52fdcd699992e5b309

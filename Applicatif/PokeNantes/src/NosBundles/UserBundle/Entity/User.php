@@ -4,12 +4,14 @@ namespace NosBundles\UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="`user`")
  * @ORM\Entity(repositoryClass="NosBundles\UserBundle\Repository\UserRepository")
  */
 class User extends BaseUser
@@ -51,6 +53,7 @@ class User extends BaseUser
      */
     protected $lastname;
 
+
     /**
      * __construct
      *
@@ -59,8 +62,9 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        // your own logic
+
     }
+
 
     /**
      * Get id
@@ -116,5 +120,6 @@ class User extends BaseUser
     public function getLastname()
     {
         return $this->lastname;
+
     }
 }
