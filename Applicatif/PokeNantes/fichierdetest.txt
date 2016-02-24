@@ -1,2 +1,3 @@
 Fred: Ici c'est ma ligne
 Vinc : Coucou
+Vinc : test git2
