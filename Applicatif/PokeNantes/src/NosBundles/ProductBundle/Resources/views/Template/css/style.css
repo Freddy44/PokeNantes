@@ -10,12 +10,13 @@
   -webkit-border-radius: 5;
   -moz-border-radius: 5;
   border-radius: 5px;
-  font-family: Arial;
   color: #ffffff;
   font-size: 20px;
   padding: 10px 20px 10px 20px;
   border: solid #735989 3px;
   text-decoration: none;
+  font-family: AvenirLTStd-Medium;
+  height: 35px;
 }
 
 .btn:hover {
@@ -28,16 +29,20 @@
   -webkit-border-radius: 5;
   -moz-border-radius: 5;
   border-radius: 5px;
-  font-family: Arial;
   color: #ffffff;
   font-size: 20px;
   padding: 10px 20px 10px 20px;
   border: solid #fde6b9 3px;
   text-decoration: none;
+  font-family: AvenirLTStd-Light;
+  height: 35px;
+}
 }
 
-/*COLORS*/
 
+/*COLORS*/
+ 
+ 
 .j, .v-fonce, .v, .v-clair, .v-clair-extra {
   height: 50px;
   width: 100px;
@@ -51,9 +56,11 @@
 }
 .v-fonce{
   background-color: #1c0243;
+ 
 }
-.v{
-  background-color: #2b0269;
+.v-violet{
+  background-color: #271e54;
+  color:white;
 }
 .v-clair{
   background-color: #472b72;
@@ -61,11 +68,16 @@
 .v-clair-extra{
   background-color: #735989;
 }
-
+ 
 /*--------------------------------*/
-
+ 
 body{
   margin: auto;
+    color:#1c0243;
+}
+
+ #logo {
+  float :left;
 }
 
 header div{
@@ -73,11 +85,83 @@ header div{
   margin: 2%;
 }
 
+ul {
+  list-style:none;
+  display: inline-flex;
+}
+
+.nav-container{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+
+.utilisateur {
+    vertical-align: middle;
+    margin-top: 2.5%;
+}
+
+
+
+/************************************/
+
+
+.menu-list { display:block;}
+.menu-list li { display:inline-block; }
+.menu-list li a {color:#eee; display: block; text-decoration: none; font-size:16px; padding:15px; font-family:Josefin Sans,sans-serif;}
+
+
+.hyper-link{ transition: all .07s linear; position: relative;}
+.box-animation {transition: all .3s ease-out; position: absolute; }
+.front{ position: absolute; }
+.back{ position: absolute; }
+
+
+.hyper-link:hover .box-animation{transform: translateZ(-5px) rotateX(90deg);}
+
+.box-animation{ transition: all .3s ease-out; position: absolute; transform:translatez(-25px); transform-style:preserve-3d; }
+.front{ transform: rotatex(0deg) translatez(35px); position: absolute; }
+.back{ transform: rotatex(-90deg) translatez(25px); position: absolute; }
+
+.hyper-link{ transition: all .07s linear; position: relative;}
+.box-animation {transition: all .3s ease-out; position: absolute; }
+.front{ position: absolute; }
+.back{ position: absolute; }
+
+.hyper-link:hover .box-animation{transform: translateZ(-5px) rotateX(90deg);} 
+
+.box-animation{ transition: all .3s ease-out; position: absolute; transform:translatez(-25px); transform-style:preserve-3d; }
+.front{ transform: rotatex(0deg) translatez(35px); position: absolute; }
+.back{ transform: rotatex(-90deg) translatez(25px); position: absolute; }
+
+
+.box-animation{transition:all .3s ease-out; position:absolute;  transform:translatez(-25px); transform-style:preserve-3d; top:0; left:0; display:block; width:100%; height:100%;}
+.front{transform:rotatex(0deg) translatez(35px); position:absolute; display:block; width:100%; height:100%;  top:0; left:0; background:#1c0243; padding:15px; color:white; box-sizing: border-box;}
+.back{transform:rotatex(-90deg) translatez(25px); position:absolute; display:block; width:100%; height:100%;  top:0; left:0; background:#efa10b; padding:15px; color:white; box-sizing: border-box;}
+
+
+/***********************************/
+
 .zone-titre-page{
   margin: 1%;
   padding: 1%;
   background-color: white;
 }
+
+#menu-nav a {
+  font-family: AvenirLTStd-Medium;
+  font-size : 25px;
+  color: white;
+  background-color: #2b0269;
+}
+
+#menu-nav a:hover {
+  font-family: AvenirLTStd-Light;
+  font-size : 25px;
+  color: black;
+  background-color: white;
+}
+
 h1{
   font-size: 30px;
 }
@@ -93,6 +177,7 @@ h1, h2, h3{
   display: inline;
   vertical-align: super;
 }
+ 
 .v h1, .v h2, .v h3{
   color: #1c0243;
   display: inline;
@@ -101,7 +186,7 @@ h1, h2, h3{
 img{
   padding-right: 1%;
 }
-
+ 
 .back-titre-page{
   background-image: url('../img/background.png');
   height: 100%;
@@ -109,31 +194,82 @@ img{
   padding: 1%;
   border-bottom: 20px solid white;
 }
-
-.accueil .j, .accueil .v {
+ 
+.accueil .v-violet, .accueil .v {
   height: 50px;
-  width: 40%;
-  color: white;
-  margin: 1%;
+  width: 35%;
+  margin: 0.5%;
   padding: 3%;
   display: inline-block;
   text-align: center;
   vertical-align: middle;
 }
-.categorie {
-  width: 80%;
+.categorie, .accueil {
   text-align: center;
 }
+.categorie-tout{
+  margin: 5%;
+}
+ 
 .categorie .v {
   height: 50px;
   width: 15%;
-  color: white;
-  margin: 1%;
   padding: 2%;
   display: inline-block;
   text-align: center;
 }
-
+.v {
+  background: #cfcad6;
+  color:#1c0243;
+}
+/* Shutter In Horizontal */
+.v, .v-violet {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.v:before, .v-violet:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1c0243;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0%;
+  transform-origin: 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.v:hover, .v:focus, .v:active, .v-violet:hover, .v-violet:focus, .v-violet:active{
+  color:white;
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.v:hover:before, .v:focus:before, .v:active:before, .v-violet:hover:before,.v-violet:active:before,.v-violet:focus:before {
+  -webkit-transform: scaleX(0.3);
+  transform: scaleX(0.9);
+}
+ 
 footer{
   background-color: #1c0243;
   color : white;
@@ -143,4 +279,5 @@ footer{
   border-top: 20px solid white;
   text-align: right;
   text-align: center;
+  font-family: AvenirLTStd-Light;
 }

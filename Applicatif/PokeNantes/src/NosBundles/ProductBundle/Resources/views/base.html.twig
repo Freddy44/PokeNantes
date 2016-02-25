@@ -3,36 +3,97 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="template/fonts/font.css" />
         <link rel="stylesheet" type="text/css" href="template/css/style.css" />
-        <link rel="stylesheet" type="text/css" href="template/css/font.css" />
         <link rel="stylesheet" type="text/css" href="template/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="template/css/bootstrap.css" />
+        <script src="template/js/jquery.min.js"></script>
         <script src="template/js/bootstrap.min.js"></script>
-        <script src="template/js/bootstrap.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+            $(".dropdown-toggle").dropdown('toggle');
+            });
+        </script>
     </head>
     
     <header>
-        <!-- logo Pokenantes -->
-        <div id=logo>
-            <h1>
-                <img src="template/img/logo.png" alt="PokeNantes">
-            </h1>
-        </div>
-        <!-- menu de navigation -->
-        <nav>
-            <h1>  
-                <div class="menu-nav">
-                    <ul>
-                        <li><a href="#">Accueil</a></li>
-                        <li><a href="#">Créer fiche produit</a></li>
-                        <li><a href="#">Catégories produit</a></li>
-                    </ul>
-                 </div>
-             </h1>
-        </nav>
-        <!-- Zone de connexion -->
-        <div class="utilisateur"><h3>Utilisateur</h3></div>   
+        <div class="nav-container">
 
+            <!-- logo Pokenantes -->
+            <div id="logo">
+                <h1>
+                    <img src="template/img/logo.png" alt="PokeNantes">
+                </h1>
+            </div>
+
+            <!-- menu de navigation --
+            <div id="menu-nav">
+                <ul class="nav nav-pills">
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Créer fiche produit</a></li>
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                         Catégories produit <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Catégorie 1</a></li>
+                            <li><a href="#">Catégorie 2</a></li>
+                            <li><a href="#">Catégorie 3</a></li>
+                            <li><a href="#">Catégorie 4</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Catégorie 5</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            <div>
+
+                    <!-- Menu rotatif -->
+            <div class="menu">
+                <ul class="menu-list">
+                    <li><a href="#" class="hyper-link">Accueil
+                            <span class="box-animation">
+                            <span class="front">Accueil</span>
+                            <span class="back">Accueil</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+
+                    <a href="#" class="hyper-link">Créer fiche produit
+                            <span class="box-animation">
+                            <span class="front">Créer fiche produit</span>
+                            <span class="back">Créer fiche produit</span>
+                            </span>
+
+                        </a>
+                    </li>
+                     <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                         Catégories produit <span class="caret"></span>
+                            <span class="box-animation">
+                            <span class="front">Catégories produit</span>
+                            <span class="back">Catégories produit</span>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Catégorie 1</a></li>
+                            <li><a href="#">Catégorie 2</a></li>
+                            <li><a href="#">Catégorie 3</a></li>
+                            <li><a href="#">Catégorie 4</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Catégorie 5</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!--------->
+
+            <!-- Zone nom utilisateur connecté -->
+            <div class="utilisateur"><h3>Utilisateur</h3></div> 
+
+            <!-- Zone de connexion/déconnexion -->
+            <div class="btn">Déconnexion</div>
+        <div>
     </header>
 
         <body>
@@ -44,9 +105,7 @@
             </div>       
         </body>
 
-
         <footer class="footer">
             <p>POEC PHP - Imie</p>
         </footer>
-
 </html>
