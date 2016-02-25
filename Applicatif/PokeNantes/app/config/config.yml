@@ -66,20 +66,11 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-<<<<<<< HEAD
-#FOSUserBundle
-fos_user:
-    db_driver: orm
-=======
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
->>>>>>> 6b77fbef3eb4ddf8a1814b52fdcd699992e5b309
     firewall_name: main
     user_class: NosBundles\UserBundle\Entity\User
     registration:
         form:
-<<<<<<< HEAD
             type: NosBundles\UserBundle\Form\RegistrationType
-=======
-            type: userbundle_user_registration
->>>>>>> 6b77fbef3eb4ddf8a1814b52fdcd699992e5b309
+            #type: userbundle_user_registration
