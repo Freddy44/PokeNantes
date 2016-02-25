@@ -3,98 +3,89 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" type="text/css" href="template/fonts/font.css" />
-        <link rel="stylesheet" type="text/css" href="template/css/style.css" />
-        <link rel="stylesheet" type="text/css" href="template/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="template/css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="template/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="template/fonts/font.css" />
         <script src="template/js/jquery.min.js"></script>
         <script src="template/js/bootstrap.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
-            $(".dropdown-toggle").dropdown('toggle');
+              $("#demo").on("hide.bs.collapse", function(){
+                $(".li-cat");
+              });
+              $("#demo").on("show.bs.collapse", function(){
+                $(".li-cat");
+              });
             });
         </script>
     </head>
     
     <header>
-        <div class="nav-container">
+<header>
+    <div class="nav-container">
 
             <!-- logo Pokenantes -->
             <div id="logo">
-                <h1>
-                    <img src="template/img/logo.png" alt="PokeNantes">
-                </h1>
+                    <h1>
+                            <img src="template/img/logo.png" alt="PokeNantes">
+                    </h1>
             </div>
 
-            <!-- menu de navigation --
-            <div id="menu-nav">
-                <ul class="nav nav-pills">
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Créer fiche produit</a></li>
-                    <li role="presentation" class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                         Catégories produit <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Catégorie 1</a></li>
-                            <li><a href="#">Catégorie 2</a></li>
-                            <li><a href="#">Catégorie 3</a></li>
-                            <li><a href="#">Catégorie 4</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Catégorie 5</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            <div>
 
-                    <!-- Menu rotatif -->
+<!-- Menu rotatif -->
             <div class="menu">
-                <ul class="menu-list">
-                    <li><a href="#" class="hyper-link">Accueil
-                            <span class="box-animation">
-                            <span class="front">Accueil</span>
-                            <span class="back">Accueil</span>
-                            </span>
-                        </a>
+                    <ul class="menu-list">
+                            <li><a href="#" class="hyper-link">Accueil
+                                            <span class="box-animation">
+                                            <span class="front">Accueil</span>
+                                            <span class="back">Accueil</span>
+                                            </span>
+                                    </a>
+                            </li>
+                            <li>
+                                    <a href="#" class="hyper-link">Créer fiche produit
+                                            <span class="box-animation">
+                                            <span class="front">Créer fiche produit</span>
+                                            <span class="back">Créer fiche produit</span>
+                                            </span>
+                                    </a>
+                            </li>
+                            <li class="li-cat">
+                            <a href="#" type="button" class="hyper-link" data-toggle="collapse" data-target="#demo">
+                                    <span class="glyphicon glyphicon-collapse-down"></span>
+                                        Liste des catégories
+                                    <span class="box-animation">
+                                    <span class="front"><span class="glyphicon glyphicon-chevron-down"></span>Liste des catégories</span>
+                                    <span class="back"><span class="glyphicon glyphicon-chevron-up"></span>Liste des catégories</span>
+                                    </button>
+                                    </span>
+                            </a>
                     </li>
-                    <li>
-
-                    <a href="#" class="hyper-link">Créer fiche produit
-                            <span class="box-animation">
-                            <span class="front">Créer fiche produit</span>
-                            <span class="back">Créer fiche produit</span>
-                            </span>
-
-                        </a>
-                    </li>
-                     <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                         Catégories produit <span class="caret"></span>
-                            <span class="box-animation">
-                            <span class="front">Catégories produit</span>
-                            <span class="back">Catégories produit</span>
-                            </span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Catégorie 1</a></li>
-                            <li><a href="#">Catégorie 2</a></li>
-                            <li><a href="#">Catégorie 3</a></li>
-                            <li><a href="#">Catégorie 4</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Catégorie 5</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                    </ul>
             </div>
-
             <!--------->
-
             <!-- Zone nom utilisateur connecté -->
-            <div class="utilisateur"><h3>Utilisateur</h3></div> 
+            <div class="utilisateur"><h3>Utilisateur</h3></div>
 
             <!-- Zone de connexion/déconnexion -->
             <div class="btn">Déconnexion</div>
-        <div>
-    </header>
+    <div>
+</header>
+
+<!-- sous menu liste des catégories -->
+    <div class="container">
+        <div class="collapse" id="demo">
+                <ul>
+                        <li><a href="#" class="cat-nav">Catégorie 1</a></li>
+                        <li><a href="#" class="cat-nav">Catégorie 2</a></li>
+                        <li><a href="#" class="cat-nav">Catégorie 3</a></li>
+                        <li><a href="#" class="cat-nav">Catégorie 4</a></li>
+                        <li><a href="#" class="cat-nav">Catégorie 5</a></li>
+                </ul>
+        </div>
+    </div>
+
+</header>
 
         <body>
             <div class="back-titre-page">
