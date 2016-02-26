@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Connexion</title>
-		<meta charset="utf-8" />
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-        <link rel="stylesheet" type="text/css" href="fonts/font.css" />
+{% extends "::base.html.twig" %}
 
-	</head>
-	<body>
-		{{header}}
+{% block title %}PokeNantes{% endblock %}
+
+{% use 'NosBundlesProductBundle:Template:header-connexion.html.twig' %}
+
+{% block section %}
+
+<div class="back-titre-page">
+	<div class="zone-titre-page"><img src="bundles/productbundle/img/picto-h2.png"/>
+		<h2>
+			Bienvenue ! Connectez-vous à votre session
+		</h2>
+	</div>
+</div>
 
 		<main class="zone-connexion">
 
@@ -22,7 +25,7 @@
 						</label>
 					</span>
 				</div>
-				<div>				
+				<div>
 					<span class="input input--haruki">
 						<input class="input__field input__field--haruki" type="password" id="input-1" name="login" />
 						<label class="input__label input__label--haruki" for="input-1">
@@ -30,8 +33,9 @@
 						</label>
 					</span>
 				</div>
-				<div>
+				<div class="bouton">
 					<input class="btn" type="submit" value="connexion"/>
+				</div>
 				<div class="zone-identifiant">
 					</div class="identifiant">
 						<a href="#" class="identifiant">J'ai perdu mes identifiants de connexion</a>
@@ -43,9 +47,6 @@
 			</form>
 		</main>
 
+	{% endblock %}
 
-
-		{{footer}}
-
-	</body>
-</html>
+	{% use 'NosBundlesProductBundle:Template:footer.html.twig' %}

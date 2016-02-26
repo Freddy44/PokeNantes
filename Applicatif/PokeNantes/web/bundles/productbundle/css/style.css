@@ -174,13 +174,9 @@ ul {
     color : #1c0243;
 }
 
-.form-connexion {
-  margin-top: 50%;
-}
-
-.form-connexion .btn {
+.form-connexion .bouton {
     margin-top: 5%;
-    margin-left: 200px;
+    text-align: center;
 }
 
 .zone-identifiant {
