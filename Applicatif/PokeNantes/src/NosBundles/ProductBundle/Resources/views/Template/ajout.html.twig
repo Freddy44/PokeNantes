@@ -1,0 +1,137 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Liste produit{% endblock %}
+
+{% use 'NosBundlesProductBundle:Template:header.html.twig' %}
+
+{% block section %}
+
+<!-- zone de titre de la page -->
+	<div class="back-titre-page">
+		<div class="zone-titre-page"><img src="bundles/productbundle/img/picto-h2.png"/>
+			<h1>
+				Ajouter Fiche Produit
+			</h1>
+		</div>
+	</div>
+
+{# ---------------------------------------- #}
+
+<main>
+			<article>
+					<table border="1">
+						<caption>
+					  		<h3>PRODUIT</h3>
+					  	</caption>
+						<tr>
+							 <th>Nom du produit *</th>
+							 <td>
+							 	<input type="text" required="required">
+							 </td>
+						</tr>
+					  	<tr>
+							<th>Catégorie du produit *</th>
+							<td>
+								<form>
+									<select name="nom" size="1">
+									<option>Catégorie 1
+									<option>Catégorie 2
+									<option>Catégorie 3
+									<option>Catégorie 4
+									<option>Catégorie 5
+									</select>
+								</form>
+							</td>
+					  	</tr>
+					  	<tr>
+							<th>Référence du produit *</th>
+							<td>
+							 	<input type="text" required="required">
+							</td>
+						</tr>
+					</table>
+				</article>
+
+				<article>
+					<table border="1">
+						<caption>
+					  		<h3>QUANTITE</h3>
+					  	</caption>
+						<tr>
+							 <th>Achats neufs</th>
+							 <td>
+							 	<input type="text" value="">
+							 </td>
+							 <th>Achats occasion</th>
+							 <td>
+							 	<input type="text" value="">
+							 </td>
+						</tr>
+					</table>
+				</article>
+
+				<article>
+					<table border="1">
+						<caption>
+					  		<h3>FOURNISSEUR</h3>
+					  	</caption>
+						<tr>
+							 <th>Nom du fournisseur *</th>
+							 <td>
+							 	<input type="text" required="required">
+							 </td>
+						</tr>
+					  	<tr>
+							<th>Numéro de téléphone *</th>
+							<td>
+								<input type="text" required="required">
+							</td>
+					  	</tr>
+					</table>
+				</article>
+
+				<article>
+					<table border="1">
+						<caption>
+					  		<h3>PARTICULARITE</h3>
+					  	</caption>
+						<tr>
+							 <th>Total produits défaillants *</th>
+							 <td>
+							 	<input type="text" required="required">
+							 </td>
+						</tr>
+					</table>
+				</article>
+
+				<article>
+					<table border="1">
+						<caption>
+					  		<h3>DESCRIPTIF</h3>
+					  	</caption>
+						<tr>
+							 <th>Photo du produit (JPG/PNG) *</th>
+							 <td>
+							 	<input type="text" required="required" placeholder="Télécharger une image">
+							 </td>
+						</tr>
+					  	<tr>
+					  		<th>
+					  			<input type="text" placeholder="Descriptif du produit">
+					  		</th>
+					  	</tr>
+					</table>
+				</article>
+
+				<h6>* champs obligatoires</h6>
+				<div>
+					<button>Valider la fiche produit</button>
+					<button>Annuler</button>
+					<button>Effacer tous les champs</button>
+				</div>
+
+</main>
+
+{% endblock %}
+
+{% use 'NosBundlesProductBundle:Template:footer.html.twig' %}
