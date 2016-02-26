@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
@@ -60,11 +61,50 @@
 							 	<input type="text" value="">
 							 </td>
 							 <th>Occasion(s)</th> 
+=======
+{% extends "::base.html.twig" %}
+
+{% block title %}Liste produit{% endblock %}
+
+{% use 'NosBundlesProductBundle:Template:header.html.twig' %}
+
+{% block section %}
+
+<!-- zone de titre de la page -->
+	<div class="back-titre-page">
+		<div class="zone-titre-page"><img src="bundles/productbundle/img/picto-h2.png"/><h1>
+			Détail
+		</h1>
+		<h2>
+			- Nom du Produit
+		</h2>
+		</div>
+	</div>
+
+{# ---------------------------------------- #}
+<main>
+			<article>
+					<table border="1">
+						<caption>
+					  		<h3>QUANTITE</h3>
+					  	</caption>
+						<tr>
+							 <th>Total</th>
+							 <td>
+							 	<input type="text" value="">
+							 </td>
+							 <th>Neuf(s)</th>
+							 <td>
+							 	<input type="text" value="">
+							 </td>
+							 <th>Occasion(s)</th>
+>>>>>>> marine
 							 <td>
 							 	<input type="text" value="">
 							 </td>
 							 <td>
 							 	<button>Modifier quantitié</button>
+<<<<<<< HEAD
 							 </td> 
 						</tr> 					  	
 					</table>
@@ -100,6 +140,43 @@
 				</section>
 
 				<section>
+=======
+							 </td>
+						</tr>
+					</table>
+				</article>
+
+				<article>
+					<table border="1">
+						<caption>
+					  		<h3>FOURNISSEUR</h3>
+					  	</caption>
+						<tr>
+							<td>
+							 	<input type="text" value="" placeholder="Nom du fournisseur">
+							 </td>
+							<td>
+							 	<input type="text" value="" placeholder="Numéro de téléphone">
+							</td>
+						</tr>
+					</table>
+				</article>
+
+				<article>
+					<table border="1">
+						<caption>
+					  		<h3>PARTICULARITE</h3>
+					  	</caption>
+						<tr>
+							<td>
+							 	<input type="text" value="" placeholder="Total produits défaillants">
+							 </td>
+						</tr>
+					</table>
+				</article>
+
+				<article>
+>>>>>>> marine
 					<img src="" alt="Image produit">
 					<p>
 						<h4>DESCRIPTION DU PRODUIT</h4>
@@ -114,6 +191,7 @@
 							cupcake jelly beans caramels cookie.
 						</h6>
 					</p>
+<<<<<<< HEAD
 				</section>
 
 			<aside>
@@ -124,3 +202,11 @@
 
 	</body>
 </html>
+=======
+				</article>
+</main>
+
+{% endblock %}
+
+{% use 'NosBundlesProductBundle:Template:footer.html.twig' %}
+>>>>>>> marine
