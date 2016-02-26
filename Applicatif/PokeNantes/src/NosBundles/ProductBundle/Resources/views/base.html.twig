@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" type="text/css" href="template/css/bootstrap.css" />
         <link rel="stylesheet" type="text/css" href="template/css/style.css" />
         <link rel="stylesheet" type="text/css" href="template/fonts/font.css" />
@@ -15,16 +15,18 @@
               });
               $("#demo").on("show.bs.collapse", function(){
                 $(".li-cat");
-                
+
               });
-              $("#demo").on("click", function() {
-               $(this).css("background", "red");
-                }); 
+              if($("#accueil") = on.("click")){
+              $(".back").on("click", function() {
+               $(".front").css("color", "red");
+                });
+              }
             });
         </script>
 
     </head>
-    
+
     <header>
 <header>
     <div class="nav-container">
@@ -76,7 +78,7 @@
             </div>
 
             <!-- Zone de connexion/déconnexion -->
-            
+
     <div>
 </header>
 
@@ -101,7 +103,7 @@
                     <h2><img src="template/img/picto-h2.png" alt="picto"/></h2>
                     <h2>Accueil</h2>
                 </div>
-            </div>       
+            </div>
         </body>
 
         <footer class="footer">
