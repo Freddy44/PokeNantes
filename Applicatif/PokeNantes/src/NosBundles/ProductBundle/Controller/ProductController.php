@@ -24,7 +24,9 @@ class ProductController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+
+    	
+    	$em = $this->getDoctrine()->getManager();
 
         $products = $em->getRepository('NosBundlesProductBundle:Product')->findAll();
 
@@ -86,7 +88,7 @@ class ProductController extends Controller
         $deleteForm = $this->createDeleteForm($product);
         $editForm = $this->createForm('NosBundles\ProductBundle\Form\ProductType', $product);
         $editForm->handleRequest($request);
-
+		
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
@@ -94,7 +96,7 @@ class ProductController extends Controller
 
             return $this->redirectToRoute('product_edit', array('id' => $product->getProdId()));
         }
-
+        
         return $this->render('product/edit.html.twig', array(
             'product' => $product,
             'edit_form' => $editForm->createView(),

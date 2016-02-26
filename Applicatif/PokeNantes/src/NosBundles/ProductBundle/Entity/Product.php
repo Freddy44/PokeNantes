@@ -60,6 +60,14 @@ class Product
      * @ORM\Column(name="prod_qty", type="integer", nullable=false)
      */
     protected $prodQty;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="prod_qty_defect", type="integer", nullable=false)
+     */
+    protected $prodQtyDefect;
+    
 
     /**
      * @var integer
@@ -265,4 +273,32 @@ class Product
     {
         return $this->ProvidersList;
     }
+	
+	/**
+	 *
+	 * @return the integer
+	 */
+	public function getProdQtyDefect() {
+		return $this->prodQtyDefect;
+	}
+	
+	/**
+	 *
+	 * @param
+	 *        	$prodQtyDefect
+	 */
+	public function setProdQtyDefect($prodQtyDefect) {
+		$this->prodQtyDefect = $prodQtyDefect;
+		return $this;
+	}
+	
+	/**
+	 *
+	 * @param unknown_type $ProvidersList        	
+	 */
+	public function setProvidersList($ProvidersList) {
+		$this->ProvidersList = $ProvidersList;
+		return $this;
+	}
+	
 }
