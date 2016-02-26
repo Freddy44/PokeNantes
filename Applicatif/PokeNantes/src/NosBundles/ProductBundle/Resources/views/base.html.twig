@@ -15,9 +15,14 @@
               });
               $("#demo").on("show.bs.collapse", function(){
                 $(".li-cat");
+                
               });
+              $("#demo").on("click", function() {
+               $(this).css("background", "red");
+                }); 
             });
         </script>
+
     </head>
     
     <header>
@@ -50,8 +55,8 @@
                                             </span>
                                     </a>
                             </li>
-                            <li class="li-cat">
-                            <a href="#" type="button" class="hyper-link" data-toggle="collapse" data-target="#demo">
+                            <li class="li-cat1">
+                                <a href="#" type="button" class="hyper-link" data-toggle="collapse" data-target="#demo">
                                     <span class="glyphicon glyphicon-collapse-down"></span>
                                         Liste des catégories
                                     <span class="box-animation">
@@ -59,16 +64,19 @@
                                     <span class="back"><span class="glyphicon glyphicon-chevron-up"></span>Liste des catégories</span>
                                     </button>
                                     </span>
-                            </a>
-                    </li>
+                                </a>
+                             </li>
                     </ul>
             </div>
+
             <!--------->
             <!-- Zone nom utilisateur connecté -->
-            <div class="utilisateur"><h3>Utilisateur</h3></div>
+            <div class="utilisateur"><h3>Utilisateur</h3>
+                <div class="btn"><a>Déconnexion</a></div>
+            </div>
 
             <!-- Zone de connexion/déconnexion -->
-            <div class="btn">Déconnexion</div>
+            
     <div>
 </header>
 

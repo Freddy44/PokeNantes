@@ -52,7 +52,6 @@ a:hover {
   outline: 0;
 }
 
-
 abbr[title] {
   border-bottom: 1px dotted;
 }
@@ -205,7 +204,7 @@ th {
   }
   a,
   a:visited {
-    text-decoration: underline;
+    text-decoration: none;
   }
   a[href]:after {
     content: " (" attr(href) ")";
@@ -233,7 +232,7 @@ th {
   img {
     max-width: 100% !important;
   }
-  p,
+  /*p,
   h2,
   h3 {
     orphans: 3;
@@ -242,7 +241,7 @@ th {
   h2,
   h3 {
     page-break-after: avoid;
-  }
+  }*/
   .navbar {
     display: none;
   }
@@ -1102,13 +1101,13 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #337ab7;
+  /*color: #337ab7;*/
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #23527c;
-  text-decoration: underline;
+ /* color: #23527c;*/
+  text-decoration: none;
 }
 a:focus {
   outline: thin dotted;
@@ -1118,9 +1117,9 @@ a:focus {
 figure {
   margin: 0;
 }
-img {
+/*img {
   vertical-align: middle;
-}
+}*/
 .img-responsive,
 .thumbnail > img,
 .thumbnail a > img,
