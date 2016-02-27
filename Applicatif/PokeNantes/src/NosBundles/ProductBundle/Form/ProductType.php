@@ -14,7 +14,7 @@ class ProductType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-    	die(var_dump($options));
+    	
     	$builder
             ->add('prodRef','text',array('label'=>'Reference du produit : '))
             ->add('prodName','text',array('label'=>'Nom du produit : '))
@@ -24,17 +24,9 @@ class ProductType extends AbstractType
             ->add('prodPicture', 'text')
             ->add('prodQty', 'integer', array('label'=>'Quantite : '))
             ->add('prodQtyDefect', 'integer', array('label'=>'Quantite defectueuse: '))
-            ->add('ProvidersList')
+            ->add('ProvidersList' , 'collection', ['type' => new ProviderType()])
         ;
     }
-    /* ->add('ProvidersList' , 'collection', ['type' => new ProviderType()])*/
-    /**
-     * @param OptionsResolver $resolver
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'NosBundles\ProductBundle\Entity\Product'
-        ));
-    }
+     
+
 }

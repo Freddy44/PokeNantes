@@ -15,6 +15,7 @@
                 <th>Prodqty</th>
                 <th>Prodqtydefect</th>
                 <th>Prodid</th>
+                <th>Provider</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -30,6 +31,16 @@
                 <td>{{ product.prodQty }}</td>
                 <td>{{ product.prodQtyDefect }}</td>
                 <td>{{ product.prodId }}</td>
+                <td><div class="tags-list">{% for Provider in product.ProvidersList %}
+           			{% if loop.index > 1 %}
+          			{% endif %} <span class="badge">
+          							{{ Provider.provName }}
+          							{{ Provider.provType }}
+          							{{ Provider.provPhone }}
+          							<br />
+          					    </span>{% endfor %}
+          			</div>
+          		</td>
                 <td>
                     <ul>
                         <li>
@@ -51,3 +62,4 @@
         </li>
     </ul>
 {% endblock %}
+           

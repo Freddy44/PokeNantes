@@ -14,18 +14,15 @@ class ProviderType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        die('boum');
+
     	$builder
             
-            ->add('provRef', 'text');
-
+            ->add('provRef', 'text', array('disabled' => true ))
+            ->add('provName', 'text', array('disabled' => true ))
+            ->add('provType', 'text', array('disabled' => true ))
+            ->add('provPhone', 'text', array('disabled' => true ))
         ;
     }
-/* ->add('provRef')   
- *  ->add('provName')
-    ->add('provType')
-    ->add('provPhone')
-    ->add('ProductsList') */
     /**
      * @param OptionsResolver $resolver
      */
