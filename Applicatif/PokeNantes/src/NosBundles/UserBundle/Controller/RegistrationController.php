@@ -6,6 +6,11 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+*
+* Override
+*
+*/
 class RegistrationController extends BaseController
 {
     public function registerAction(Request $request)
@@ -30,7 +35,7 @@ class RegistrationController extends BaseController
                 $route = 'fos_user_registration_check_email';
             } else {
                 $this->authenticateUser($user);
-                //$route = 'fos_user_registration_confirmed';
+                $route = 'fos_user_registration_confirmed';
                 //$route = 'acceuil';
             }
 

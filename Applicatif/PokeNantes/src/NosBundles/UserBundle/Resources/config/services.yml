@@ -2,9 +2,3 @@ services:
 #    nos_bundles_user.example:
 #        class: NosBundles\UserBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
-<<<<<<< HEAD
-=======
-    userbundle.util.user_manipulator:
-        class:      NosBundles\UserBundle\Util\UserManipulator
-        arguments:  [@fos_user.user_manager]
->>>>>>> 6b77fbef3eb4ddf8a1814b52fdcd699992e5b309

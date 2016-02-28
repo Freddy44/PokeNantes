@@ -9,8 +9,19 @@ class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('firstname');
-        $builder->add('lastname');
+        $builder->add('firstname')
+                ->add('lastname')
+                ->add('roles', 'collection', array(
+                   'type' => 'choice',
+                   'options' => array(
+                       'label' => false, /* Ajoutez cette ligne */
+                       'choices' => array(
+                           'ROLE_ADMIN' => 'ROLE_ADMIN',
+                           'ROLE_USER' => 'ROLE_USER'
+                       )
+                     )
+                   )
+                );
     }
 
     public function getParent()
