@@ -3,7 +3,11 @@
     <head>
         <meta charset="UTF-8" />
     </head>
+    {#% block header %#}
+      {{ include('NosBundlesProductBundle:Template:header-connexion.html.twig') }}
+    {#% endblock %#}
     <body>
+
       {#% block body %#}
         <div>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -30,4 +34,7 @@
         </div>
       {#% endblock %#}
     </body>
+    {#% block footer %#}
+      {{ include('NosBundlesProductBundle:Template:footer.html.twig') }}
+    {#% endblock %#}
 </html>

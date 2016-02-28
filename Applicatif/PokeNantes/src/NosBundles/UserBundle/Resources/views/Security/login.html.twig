@@ -1,12 +1,19 @@
-
-
 {#% extends "FOSUserBundle::layout.html.twig" %#}
 {% extends "NosBundlesUserBundle::layout.html.twig" %}
+
+{% block title %}PokeNantes{% endblock %}
 
 
 
 {% block fos_user_content %}
 
+<div class="back-titre-page">
+	<div class="zone-titre-page"><img src="bundles/productbundle/img/picto-h2.png"/>
+		<h2>
+			Bienvenue ! Connectez-vous à votre session
+		</h2>
+	</div>
+</div>
 
   {# S'il y a une erreur, on l'affiche dans un joli cadre #}
 
@@ -16,39 +23,37 @@
 
 
   {# Le formulaire, avec URL de soumission vers la route « login_check »  #}
-<p> Ma vue login </p>
-<form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal">
+  <form action="{{ path("fos_user_security_check") }}" method="post" class="form-connexion">
       <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
       <div class="control-group">
-          <label class="control-label" for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
-          <div class="controls">
-              <div class="input-prepend">
-                  <span class="add-on"><i class="icon-user"></i></span><input type="text" id="username" name="_username" value="{{ last_username }}" />
-              </div>
-          </div>
+				<span class="input input--haruki">
+          <label class="input__label input__label--haruki" for="username"></label>
+					<span class="input__label-content input__label-content--haruki">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</span>
+					<input class="input__field input__field--haruki" type="text" id="username" name="_username" value="{{ last_username }}" />
+        </span>
       </div>
 
       <div class="control-group">
-          <label class="control-label" for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
-          <div class="controls">
-              <div class="input-prepend">
-                  <span class="add-on"><i class="icon-lock"></i></span><input type="password" id="password" name="_password" />
-              </div>
-          </div>
+				<span class="input input--haruki">
+          <label class="input__label input__label--haruki" for="password"></label>
+          <span class="input__label-content input__label-content--haruki">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</span>
+					<input class="input__field input__field--haruki" type="password" id="password" name="_password" />
+        </span>
       </div>
 
-      <div class="control-group">
+      <div class="zone-identifiant">
+				<div class="identifiant">
           <label class="control-label" for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
-          <div class="controls">
-              <div class="input-prepend">
-                  <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-              </div>
-          </div>
+          <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+				</div>
+				</div class="identifiant">
+					<a href="#" class="identifiant">J'ai perdu mes identifiants de connexion</a>
+				</div>
       </div>
 
       <div>
-          <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" class="btn btn-primary" />
+          <input class="btn" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" class="btn btn-primary" />
       </div>
   </form>
 
