@@ -54,9 +54,9 @@ class ProductController extends Controller
             
             return $this->redirectToRoute('product_show', array('id' => $product->getProdId()));
         }
-        //$toto = $form->createView();
+        $toto = $form->createView();
         //die(var_dump($toto->vars));
-        die(var_dump($product));
+        //die(var_dump($product));
          return $this->render('product/new.html.twig', array(
             'product' => $product,
             'form' => $toto

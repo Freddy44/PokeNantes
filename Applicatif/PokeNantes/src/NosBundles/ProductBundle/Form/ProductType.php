@@ -24,9 +24,18 @@ class ProductType extends AbstractType
             ->add('prodPicture', 'text')
             ->add('prodQty', 'integer', array('label'=>'Quantite : '))
             ->add('prodQtyDefect', 'integer', array('label'=>'Quantite defectueuse: '))
-            ->add('ProvidersList' , 'collection', ['type' => new ProviderType()])
+            ->add('ProvidersList', 'entity', array(
+            
+            		'class'    => 'NosBundlesProductBundle:Provider',
+            
+            		'property' => 'provName',
+            
+            		'multiple' => true
+            
+            ));
         ;
     }
+     //            ->add('ProvidersList' , 'collection', ['type' => new ProviderType(),'allow_add'    => true, 'allow_delete' => true])
      
 
 }
