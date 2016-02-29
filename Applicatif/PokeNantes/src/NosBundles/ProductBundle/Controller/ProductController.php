@@ -28,7 +28,7 @@ class ProductController extends Controller
     	$em = $this->getDoctrine()->getManager();
 
         $products = $em->getRepository('NosBundlesProductBundle:Product')->findAll();
-        return $this->render('product/index.html.twig', array(
+        return $this->render('NosBundlesProductBundle:product:index.html.twig', array(
             'products' => $products,
         ));
     }
@@ -54,12 +54,10 @@ class ProductController extends Controller
             
             return $this->redirectToRoute('product_show', array('id' => $product->getProdId()));
         }
-        $toto = $form->createView();
-        //die(var_dump($toto->vars));
-        //die(var_dump($product));
-         return $this->render('product/new.html.twig', array(
+        
+         return $this->render('NosBundlesProductBundle:product:new.html.twig', array(
             'product' => $product,
-            'form' => $toto
+            'form' => $form->createView()
         )); 
     }
 
@@ -73,7 +71,7 @@ class ProductController extends Controller
     {
         $deleteForm = $this->createDeleteForm($product);
 
-        return $this->render('product/show.html.twig', array(
+        return $this->render('NosBundlesProductBundle:product:show.html.twig', array(
             'product' => $product,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -90,7 +88,6 @@ class ProductController extends Controller
         $deleteForm = $this->createDeleteForm($product);
         $editForm = $this->createForm('NosBundles\ProductBundle\Form\ProductType', $product);
         $editForm->handleRequest($request);
-       	//die(var_dump($editForm));
         
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -99,8 +96,8 @@ class ProductController extends Controller
 
             return $this->redirectToRoute('product_edit', array('id' => $product->getProdId()));
         }
-        //die(var_dump($product));
-        return $this->render('product/edit.html.twig', array(
+       
+        return $this->render('NosBundlesProductBundle:product:edit.html.twig', array(
             'product' => $product,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
