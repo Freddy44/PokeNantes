@@ -1,5 +1,16 @@
+nos_bundles_user:
+    resource: "@NosBundlesUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 nos_bundles_product:
     resource: "@NosBundlesProductBundle/Controller/"
     type:     annotation
     prefix:   /
 
+
+#fos_user:
+#    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+_user_bundle:
+    resource: "@NosBundlesUserBundle/Resources/config/routing.yml"
