@@ -53,6 +53,22 @@ class Provider
 	 *
 	 * @return the string
 	 */
+	
+    /**
+     * Bidirectional
+     *
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="ProvidersList")
+     */
+    protected $ProductsList;
+	
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+    	$this->ProductsList = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+	
 	public function getProvRef() {
 		return $this->provRef;
 	}
@@ -141,4 +157,37 @@ class Provider
 	
 
     
+
+    /**
+     * Add ProductsList
+     *
+     * @param \NosBundles\ProductBundle\Entity\Product $productsList
+     * @return Provider
+     */
+    public function addProductsList(\NosBundles\ProductBundle\Entity\Product $productsList)
+    {
+        $this->ProductsList[] = $productsList;
+
+        return $this;
+    }
+
+    /**
+     * Remove ProductsList
+     *
+     * @param \NosBundles\ProductBundle\Entity\Product $productsList
+     */
+    public function removeProductsList(\NosBundles\ProductBundle\Entity\Product $productsList)
+    {
+        $this->ProductsList->removeElement($productsList);
+    }
+
+    /**
+     * Get ProductsList
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProductsList()
+    {
+        return $this->ProductsList;
+    }
 }
