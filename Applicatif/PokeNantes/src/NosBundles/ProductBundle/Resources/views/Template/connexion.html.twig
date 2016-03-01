@@ -1,0 +1,89 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}PokeNantes{% endblock %}
+
+{% use 'NosBundlesProductBundle:Template:header-connexion.html.twig' %}
+
+{% block section %}
+
+<div class="back-titre-page">
+	<div class="zone-titre-page"><img src="bundles/productbundle/img/picto-h2.png"/>
+		<h2>
+			Bienvenue ! Connectez-vous à votre session
+		</h2>
+	</div>
+</div>
+
+		<main class="zone-connexion">
+
+			<form class="form-connexion" action="traitement.php" method="">
+				<div>
+					<span class="input input--haruki">
+						<input class="input__field input__field--haruki" type="text" id="input-1" name="login" />
+						<label class="input__label input__label--haruki" for="input-1">
+							<span class="input__label-content input__label-content--haruki">nom d'utilisateur</span>
+						</label>
+					</span>
+				</div>
+				<div>
+					<span class="input input--haruki">
+						<input class="input__field input__field--haruki" type="password" id="input-1" name="login" />
+						<label class="input__label input__label--haruki" for="input-1">
+							<span class="input__label-content input__label-content--haruki">mot de passe</span>
+						</label>
+					</span>
+				</div>
+				<div class="bouton">
+					<input class="btn" type="submit" value="connexion"/>
+				</div>
+				<div class="zone-identifiant">
+					</div class="identifiant">
+						<a href="#" class="identifiant">J'ai perdu mes identifiants de connexion</a>
+					</div>
+					<div class="identifiant">
+						<input type="checkbox" name="check"><span class="">&nbsp</span> Mémoriser mes identifiants de connexion
+					</div>
+				</div>
+			</form>
+		</main>
+
+		<script src="js/classie.js"></script>
+				<script>
+					(function() {
+						// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+						if (!String.prototype.trim) {
+							(function() {
+								// Make sure we trim BOM and NBSP
+								var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+								String.prototype.trim = function() {
+									return this.replace(rtrim, '');
+								};
+							})();
+						}
+
+						[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+							// in case the input is already filled..
+							if( inputEl.value.trim() !== '' ) {
+								classie.add( inputEl.parentNode, 'input--filled' );
+							}
+
+							// events:
+							inputEl.addEventListener( 'focus', onInputFocus );
+							inputEl.addEventListener( 'blur', onInputBlur );
+						} );
+
+						function onInputFocus( ev ) {
+							classie.add( ev.target.parentNode, 'input--filled' );
+						}
+
+						function onInputBlur( ev ) {
+							if( ev.target.value.trim() === '' ) {
+								classie.remove( ev.target.parentNode, 'input--filled' );
+							}
+						}
+					})();
+				</script>
+
+	{% endblock %}
+
+	{% use 'NosBundlesProductBundle:Template:footer.html.twig' %}
