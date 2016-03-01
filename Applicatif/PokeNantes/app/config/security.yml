@@ -58,7 +58,7 @@ security:
     access_control:
         # PAGE LOGIN ACCESSIBLE A TOUS
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        #- { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         #  PAGES ACCESSIBLES AUX ADMINISTRATEURS
         - { path: ^/admin, role: ROLE_ADMIN }
 
