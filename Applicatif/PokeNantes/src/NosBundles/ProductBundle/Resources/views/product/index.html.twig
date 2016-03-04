@@ -1,6 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends '::base.html.twig' %}
 
-{% block body %}
+
+
+{% block section %}
     <h1>Product list</h1>
 
     <table>
@@ -22,7 +24,7 @@
         <tbody>
         {% for product in products %}
             <tr>
-                <td><a href="{{ path('product_show', { 'id': product.prodId }) }}">{{ product.prodRef }}</a></td>
+                <td><a href="{#{ path('product_show', { 'id': product.prodId }) }#}">{{ product.prodRef }}</a></td>
                 <td>{{ product.prodName }}</td>
                 <td>{{ product.prodCat }}</td>
                 <td>{{ product.prodDesc }}</td>
@@ -62,4 +64,3 @@
         </li>
     </ul>
 {% endblock %}
-           
