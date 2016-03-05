@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use NosBundles\ProductBundle\Entity\Product;
+use NosBundles\ProductBundle\Repository\ProductRepository;
 use NosBundles\ProductBundle\Form\ProductType;
 
 /**
@@ -24,11 +25,19 @@ class ProductController extends Controller
      */
     public function indexAction()
     {
-    	
-    	$em = $this->getDoctrine()->getManager();
 
-        $products = $em->getRepository('NosBundlesProductBundle:Product')->findAll();
-        return $this->render('NosBundlesProductBundle:product:index.html.twig', array(
+    	$em = $this->getDoctrine()->getManager();
+//      $NameCategorie = isset($_GET['prod_cat']) ? stripslashes($_GET['prod_cat']) : '';
+      $NameCategorie = '';
+      /* Si on reçoit un nom de catégorie valide alors on recherche les Films de cette catégorie uniquement */
+      if (isset($NameCategorie) && !empty($NameCategorie)) {
+          $products = $em->getRepository('NosBundlesProductBundle:Product')->findByprod_cat($NameCategorie);
+      }else{
+            $products = $em->getRepository('NosBundlesProductBundle:Product')->findAll();
+      }
+
+
+      return $this->render('NosBundlesProductBundle:product:index.html.twig', array(
             'products' => $products,
         ));
     }
@@ -41,24 +50,24 @@ class ProductController extends Controller
      */
     public function newAction(Request $request)
     {
-    	
+
     	$product = new Product();
         $form = $this->createForm(new ProductType() , $product);
-        
+
         $form->handleRequest($request);
-        
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
-            
+
             return $this->redirectToRoute('product_show', array('id' => $product->getProdId()));
         }
-        
+
          return $this->render('NosBundlesProductBundle:product:new.html.twig', array(
             'product' => $product,
             'form' => $form->createView()
-        )); 
+        ));
     }
 
     /**
@@ -88,7 +97,7 @@ class ProductController extends Controller
         $deleteForm = $this->createDeleteForm($product);
         $editForm = $this->createForm('NosBundles\ProductBundle\Form\ProductType', $product);
         $editForm->handleRequest($request);
-        
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
@@ -96,7 +105,7 @@ class ProductController extends Controller
 
             return $this->redirectToRoute('product_edit', array('id' => $product->getProdId()));
         }
-       
+
         return $this->render('NosBundlesProductBundle:product:edit.html.twig', array(
             'product' => $product,
             'edit_form' => $editForm->createView(),

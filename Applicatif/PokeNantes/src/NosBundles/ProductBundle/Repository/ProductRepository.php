@@ -19,17 +19,15 @@ class ProductRepository extends EntityRepository
      * @param int $NameCategorie nom de la categorie à rechercher
      * @return NosBundles\ProductBundle\Entity\Product[] Liste des produits de la catégorie demandée
      */
-    public function findByCategorie($NameCategorie = "")
+    public function findByprod_cat($NameCategorie = "")
     {
         /* Création de la requète avec le query builder */
         $queryBuilder = $this->_em->createQueryBuilder();
         $queryBuilder->select("p")
                      ->from("NosBundlesProductBundle:Product", "p");
 
-        /* Si on reçoit un nom de catégorie valide alors on recherche les Films de cette catégorie uniquement */
-        if ($NameCategorie != "") {
-            $queryBuilder->where("p.prod_cat like '% :NameCategorie %'")->setParameter("NameCategorie", $NameCategorie);
-        }
+        $queryBuilder->where("p.prod_cat like '% :NameCategorie %'")->setParameter("prodCat", $NameCategorie);
+
         /* Puis on retourne la liste des films du genre demandé */
         return $queryBuilder->getQuery()->getResult();
     }
