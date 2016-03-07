@@ -4,36 +4,20 @@
         <meta charset="UTF-8" />
         <title>{% block title %}PokeNantes{% endblock %}</title>
 
-        <link href="{{ asset('bundles/productbundle/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('bundles/productbundle/css/style.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('bundles/productbundle/fonts/font.css') }}" rel="stylesheet" type="text/css" />
-
-        <script src="{{ asset('bundles/productbundle/js/jquery.min.js') }}"></script>
-        <script src="{{ asset('bundles/productbundle/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('bundles/productbundle/js/classie.js') }}"></script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-              $("#demo").on("hide.bs.collapse", function(){
-                $(".li-cat");
-              });
-              $("#demo").on("show.bs.collapse", function(){
-                $(".li-cat");
-
-              });
-              if($("#accueil") = on.("click")){
-              $(".back").on("click", function() {
-               $(".front").css("color", "red");
-                });
-              }
-            });
-        </script>
+        <link href="{{ asset('bundles/frameworkPoke/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/frameworkPoke/css/style.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/frameworkPoke/fonts/font.css') }}" rel="stylesheet" type="text/css" />
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <script src="{{ asset('bundles/frameworkPoke/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('bundles/frameworkPoke/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('bundles/frameworkPoke/js/javascript.js') }}"></script>
+
     </head>
     <body>
-
-        <header>{% block header %}header{% endblock %}</header>
+        <header>{% block header %}{% endblock %}</header>
         <section>{% block section %}{% endblock %}</section>
         <footer><p>POEC PHP - IMIE</p></footer>
-        {% block javascripts %}{% endblock %}
+        {% block javascript %}{% endblock %}
     </body>
 </html>

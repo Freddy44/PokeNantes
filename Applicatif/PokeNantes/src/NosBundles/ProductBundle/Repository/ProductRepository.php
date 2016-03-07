@@ -13,5 +13,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProductRepository extends EntityRepository
 {
+    /**
+     * Retourne la liste des produits correspondant à la catégorie passée en paramètre (Name)
+     * Si aucune catégorie n'est spécifiée, la liste de tout les produits est renvoyée.
+     * @param int $NameCategorie nom de la categorie à rechercher
+     * @return NosBundles\ProductBundle\Entity\Product[] Liste des produits de la catégorie demandée
+     */
+    public function findByprod_cat($NameCategorie = "")
+    {
+        /* Création de la requète avec le query builder */
+        $queryBuilder = $this->_em->createQueryBuilder();
+        $queryBuilder->select("p")
+                     ->from("NosBundlesProductBundle:Product", "p");
 
+        $queryBuilder->where("p.prod_cat like '% :NameCategorie %'")->setParameter("prodCat", $NameCategorie);
+
+        /* Puis on retourne la liste des films du genre demandé */
+        return $queryBuilder->getQuery()->getResult();
+    }
 }
