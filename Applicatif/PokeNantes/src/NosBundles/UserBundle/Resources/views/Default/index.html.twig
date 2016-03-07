@@ -1,9 +1,9 @@
-{#% extends "FOSUserBundle::layout.html.twig" %#}
 {% extends "NosBundlesUserBundle::layout.html.twig" %}
 
 {% block fos_user_content %}
 
-Bonjour {{ app.user.firstname }} - {#{ app.user.email }#}
+Bonjour
+{{ app.user.firstname }} - {#{ app.user.email }#}
 
 connection réussi
 {% endblock fos_user_content %}

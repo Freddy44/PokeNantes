@@ -15,7 +15,7 @@ class MonController extends Controller
 
       $user = $this->container->get('security.context')->getToken()->getUser();
 
-        return $this->render('NosBundlesUserBundle:Default:mapage.html.twig',array(var_dump($user))  );
+      return $this->render('NosBundlesProductBundle:product:index.html.twig',array($user)  );
 
     }
 }

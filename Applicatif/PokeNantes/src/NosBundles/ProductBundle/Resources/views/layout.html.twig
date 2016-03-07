@@ -11,7 +11,7 @@
           <!-- Zone nom utilisateur connecté -->
           <div class="utilisateur">
               {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                  {{ 'Bonjour '~ app.user.username|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                  <img src="{{ asset('bundles/frameworkPoke/img/user.png')}}"/>{{ 'Bonjour '~ app.user.username|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
                   <a href="{{ path('fos_user_security_logout') }}">
                      {{ 'Déconnexion'|trans({}, 'FOSUserBundle') }}
                   </a>

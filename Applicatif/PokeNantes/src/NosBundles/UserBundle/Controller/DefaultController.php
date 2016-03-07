@@ -19,7 +19,7 @@ class DefaultController extends Controller
         /* Pour récupérer les infos concernant le user */
         $user = $this->container->get('security.context')->getToken()->getUser();
 
-        return $this->render('NosBundlesUserBundle:Default:index.html.twig',array(var_dump($user))  );
+        return $this->render('NosBundlesProductBundle:product:index.html.twig',array($user)  );
       }else{
         // fait une redirection vers une page définie par le routeur
         return $this->redirect($this->generateUrl("fos_user_security"));
