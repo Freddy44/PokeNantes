@@ -1,0 +1,72 @@
+{% extends 'NosBundlesProductBundle::layout.html.twig' %}
+
+{% block title %}Product{% endblock %}
+{% block title_page %}<h1>Product</h1>{% endblock %}
+
+{% block main %}
+<div class="container">
+  <div>
+      <ul>
+          <li><a class="cat-nav" href="" name="vetements">Tous les produits</a></li>
+          <li><a class="cat-nav" href="" name="deguisements">En rupture de stock</a></li>
+          <li><a class="cat-nav" href="" name="jeux">Produits défaillants</a></li>
+
+      </ul>
+  </div>
+</div>
+
+<article id="listeCat">
+    <div class="liste">
+    <h3>
+    <a href="{{ path('product_edit', { 'id': product.prodId }) }}">
+      {{ product.prodName }}
+    </h3>
+    <div class="buttonListeCat">
+        <a href="a href="{{ path('product_edit', { 'id': product.prodId }) }}"" class="edit"><img  src="{{ asset('bundles/frameworkPoke/img/pictos/edit.png')}}"/></a>
+        <a href="#" class="remove"><img  src="{{ asset('bundles/frameworkPoke/img/pictos/remove.png')}}"/></a>
+
+    </div>
+      <span>
+        <img src="{{ asset('bundles/frameworkPoke/img/imgbase.png')}}"/>
+        <div>
+            <ul>
+                <li><b>Référence du produit :</b><a href="{{ path('product_show', { 'id': product.prodId }) }}">{{ product.prodRef }}</a></li>
+                <li><b>Nom catégorie : </b>{{ product.prodCat }}</li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li><b>Quantité neuf : </b>{{ product.prodQty }}</li>
+                <li><b>Quantité occasion</b> : lorem ipsum</li>
+            </ul>
+        </div>
+        {% for Provider in product.ProvidersList %}
+        {% if loop.index > 1 %}
+          <div>
+              <img src="{{ asset('bundles/frameworkPoke/img/pictos/mentionspe.png')}}"/>
+              <p>En rupture de stock</p>
+              <ul>
+                <li>{{ Provider.provName }}</li>
+                <li>{{ Provider.provType }}</li>
+                <li>{{ Provider.provPhone }}</li>
+              </ul>
+           </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</article>
+    <ul>
+        <li>
+            <a href="{{ path('product_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('product_edit', { 'id': product.prodId }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{# endblock MAIN #}
+{% endblock %}

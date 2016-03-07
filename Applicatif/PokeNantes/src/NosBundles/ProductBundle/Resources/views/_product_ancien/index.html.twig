@@ -1,0 +1,67 @@
+{% extends 'NosBundlesProductBundle::layout.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+{% block title_page %}<h2>Accueil<h2>{% endblock %}
+
+{% block main %}
+    <table>
+        <thead>
+            <tr>
+                <th>Prodref</th>
+                <th>Prodname</th>
+                <th>Prodcat</th>
+                <th>Proddesc</th>
+                <th>Prodstate</th>
+                <th>Prodpicture</th>
+                <th>Prodqty</th>
+                <th>Prodqtydefect</th>
+                <th>Prodid</th>
+                <th>Provider</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td><a href="{{ path('product_show', { 'id': product.prodId }) }}">{{ product.prodRef }}</a></td>
+                <td>{{ product.prodName }}</td>
+                <td>{{ product.prodCat }}</td>
+                <td>{{ product.prodDesc }}</td>
+                <td>{{ product.prodState }}</td>
+                <td>{{ product.prodPicture }}</td>
+                <td>{{ product.prodQty }}</td>
+                <td>{{ product.prodQtyDefect }}</td>
+                <td>{{ product.prodId }}</td>
+                <td><div class="tags-list">{% for Provider in product.ProvidersList %}
+           			{% if loop.index > 1 %}
+          			{% endif %} <span class="badge">
+          							{{ Provider.provName }}
+          							{{ Provider.provType }}
+          							{{ Provider.provPhone }}
+          							<br />
+          					    </span>{% endfor %}
+          			</div>
+          		</td>
+                <td>
+                    <ul>
+                        <li>
+                            <button><a href="{{ path('product_show', { 'id': product.prodId }) }}">show</a><
+                        </li>
+                        <li>
+                            <button><a href="{{ path('product_edit', { 'id': product.prodId }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('product_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+
+{# endblock MAIN #}
+{% endblock %}

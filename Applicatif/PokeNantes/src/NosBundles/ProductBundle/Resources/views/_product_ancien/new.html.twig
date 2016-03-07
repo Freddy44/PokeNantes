@@ -1,0 +1,20 @@
+{% extends 'NosBundlesProductBundle::layout.html.twig' %}
+
+{% block title %}Product creation{% endblock %}
+
+{% block title_page %}<h1>Product creation</h1>{% endblock %}
+
+{% block main %}
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('product_index') }}">Back to the list</a>
+        </li>
+    </ul>
+
+{# endblock MAIN #}
+{% endblock %}
