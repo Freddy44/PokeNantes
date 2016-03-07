@@ -1,65 +1,32 @@
-{% extends 'base.html.twig' %}
+{% extends 'NosBundlesProductBundle::layout.html.twig' %}
 
-{% block body %}
-    <h1>Product list</h1>
+{# -- title -- #}
+{% block title %}Accueil{% endblock %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Prodref</th>
-                <th>Prodname</th>
-                <th>Prodcat</th>
-                <th>Proddesc</th>
-                <th>Prodstate</th>
-                <th>Prodpicture</th>
-                <th>Prodqty</th>
-                <th>Prodqtydefect</th>
-                <th>Prodid</th>
-                <th>Provider</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
-            <tr>
-                <td><a href="{{ path('product_show', { 'id': product.prodId }) }}">{{ product.prodRef }}</a></td>
-                <td>{{ product.prodName }}</td>
-                <td>{{ product.prodCat }}</td>
-                <td>{{ product.prodDesc }}</td>
-                <td>{{ product.prodState }}</td>
-                <td>{{ product.prodPicture }}</td>
-                <td>{{ product.prodQty }}</td>
-                <td>{{ product.prodQtyDefect }}</td>
-                <td>{{ product.prodId }}</td>
-                <td><div class="tags-list">{% for Provider in product.ProvidersList %}
-           			{% if loop.index > 1 %}
-          			{% endif %} <span class="badge">
-          							{{ Provider.provName }}
-          							{{ Provider.provType }}
-          							{{ Provider.provPhone }}
-          							<br />
-          					    </span>{% endfor %}
-          			</div>
-          		</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('product_show', { 'id': product.prodId }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('product_edit', { 'id': product.prodId }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+{# -- titre page -- #}
 
-    <ul>
-        <li>
-            <a href="{{ path('product_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+{% block title_page %}<h1>Acceuil</h1>{% endblock %}
+
+{# -- contenu page -- #}
+
+{% block main %}
+		<div class="accueil">
+			<a href="{{ path('product_new') }}" class="v-violet"><p>CRÉER FICHE PRODUIT</p></a>
+			<a class="v" value="" name="prod_cat"><p>AFFICHER TOUS LES PRODUITS</p></a>
+		</div>
+
+		<div class="categorie-tout">
+			<img src="{{ asset('bundles/frameworkPoke/img/picto-h2.png') }}"/><h2>Toutes les catégories</h2>
+			<form action="edit.html." method="GET" class="categorie">
+						<a class="v" href="{{ path('product_show') }}"value="vetements" name="prod_cat"><p>Vêtements</p></a>
+						<a class="v" value="deguisements" name="prod_cat"><p>Déguisements</p></a>
+						<a class="v" value="jeux" name="prod_cat"><p>Jeux Vidéos</p></a>
+						<a class="v" value="livres" name="prod_cat"><p>Livres</p></a>
+						<a class="v" value="dvd" name="prod_cat"><p>DVD</p></a>
+						<a class="v" value="cd" name="prod_cat"><p>CD</p></a>
+						<a class="v" value="figurines" name="prod_cat"><p>Figurines</p></a>
+						<a class="v" value="cartes" name="prod_cat"><p>Cartes de Collection</p></a>
+			</form>
+		</div>
+
 {% endblock %}
-           
