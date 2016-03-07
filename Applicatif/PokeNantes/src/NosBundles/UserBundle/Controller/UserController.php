@@ -21,6 +21,7 @@ class UserController extends Controller
 
         //return $this->render('NosBundlesUserBundle:Default:index.html.twig',array(var_dump($user))  );
         return $this->redirect($this->generateUrl("product_index"));
+
       }else{
         // fait une redirection vers une page définie par le routeur
         return $this->redirect($this->generateUrl("fos_user_security"));
