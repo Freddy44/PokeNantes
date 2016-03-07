@@ -10,6 +10,7 @@ use NosBundles\ProductBundle\Entity\Product;
 use NosBundles\ProductBundle\Repository\ProductRepository;
 use NosBundles\ProductBundle\Form\ProductType;
 
+
 /**
  * Product controller.
  *
@@ -27,20 +28,26 @@ class ProductController extends Controller
     {
 
     	$em = $this->getDoctrine()->getManager();
-//      $NameCategorie = isset($_GET['prod_cat']) ? stripslashes($_GET['prod_cat']) : '';
-      $NameCategorie = '';
-      /* Si on reçoit un nom de catégorie valide alors on recherche les Films de cette catégorie uniquement */
-      if (isset($NameCategorie) && !empty($NameCategorie)) {
-          $products = $em->getRepository('NosBundlesProductBundle:Product')->findByprod_cat($NameCategorie);
-      }else{
-            $products = $em->getRepository('NosBundlesProductBundle:Product')->findAll();
+      //$NameCategorie = '';
+      if(isset($_GET['prod_cat'])){
+            $NameCategorie = $_GET['prod_cat'];
+
+            //die(var_dump($NameCategorie));
+            /* Si on reçoit un nom de catégorie valide alors on recherche les Films de cette catégorie uniquement */
+            if (!empty($NameCategorie)) {
+                $products = $em->getRepository('NosBundlesProductBundle:Product')->findByprod_cat($NameCategorie);
+            }
+
+            if(empty($NameCategorie)){
+                  $products = $em->getRepository('NosBundlesProductBundle:Product')->findAll();
+            }
+            return $this->render('NosBundlesProductBundle:product:show.html.twig', array(
+                  'products' => $products,
+              ));
       }
 
-
-      return $this->render('NosBundlesProductBundle:product:index.html.twig', array(
-            'products' => $products,
-        ));
-    }
+      return $this->redirect('NosBundlesProductBundle:product:index.html.twig');
+      }
 
     /**
      * Creates a new Product entity.
