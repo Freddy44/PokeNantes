@@ -7,7 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use NosBundles\ProductBundle\Entity\Product;
+use NosBundles\ProductBundle\Repository\ProductRepository;
 use NosBundles\ProductBundle\Form\ProductType;
+
 
 /**
  * Product controller.
@@ -26,12 +28,26 @@ class ProductController extends Controller
     {
 
     	$em = $this->getDoctrine()->getManager();
+      //$NameCategorie = '';
+      if(isset($_GET['prod_cat'])){
+            $NameCategorie = $_GET['prod_cat'];
 
-        $products = $em->getRepository('NosBundlesProductBundle:Product')->findAll();
-        return $this->render('NosBundlesProductBundle:product:index.html.twig', array(
-            'products' => $products,
-        ));
-    }
+            //die(var_dump($NameCategorie));
+            /* Si on reçoit un nom de catégorie valide alors on recherche les Films de cette catégorie uniquement */
+            if (!empty($NameCategorie)) {
+                $products = $em->getRepository('NosBundlesProductBundle:Product')->findByprod_cat($NameCategorie);
+            }
+
+            if(empty($NameCategorie)){
+                  $products = $em->getRepository('NosBundlesProductBundle:Product')->findAll();
+            }
+            return $this->render('NosBundlesProductBundle:product:show.html.twig', array(
+                  'products' => $products,
+              ));
+      }
+
+      return $this->redirect('NosBundlesProductBundle:product:index.html.twig');
+      }
 
     /**
      * Creates a new Product entity.
@@ -52,7 +68,7 @@ class ProductController extends Controller
             $em->persist($product);
             $em->flush();
 
-            return $this->redirectToRoute('product_show', array('id' => $product->getProdId()));
+            return $this->redirectToRoute('product_new', array('id' => $product->getProdId()));
         }
 
          return $this->render('NosBundlesProductBundle:product:new.html.twig', array(

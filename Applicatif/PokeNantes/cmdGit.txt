@@ -2,6 +2,7 @@ Commande Git :
 
 git pull
 git status
+git add /chemin
 git commit -m « mon message »
 git push
 
@@ -15,6 +16,11 @@ Les branch :
 
 	créer une branche et y basculer tout de suite :
 		git checkout -b maBranch
+
+	supprimer ma branch
+		git checkout master
+		git branch -d mabranch
+
 
 	Merger sa branch :
 		git checkout master

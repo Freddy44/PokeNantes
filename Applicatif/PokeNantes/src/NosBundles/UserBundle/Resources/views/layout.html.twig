@@ -1,24 +1,29 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-    </head>
-    {#% block header %#}
-      {{ include('NosBundlesProductBundle:Template:header-connexion.html.twig') }}
-    {#% endblock %#}
-    <body>
+{% extends "::base.html.twig" %}
 
-      {#% block body %#}
-        <div>
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {{ 'Vous êtes loggé comme '~ app.user.username|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'Déconnection'|trans({}, 'FOSUserBundle') }}
-                </a>
-            {% else %}
-                <a href="{{ path('fos_user_security_login') }}">{{ 'Connection'|trans({}, 'FOSUserBundle') }}</a>
-            {% endif %}
-        </div>
+{% block header %}
+	<div class="nav-container">
+		<!-- logo Pokenantes -->
+			<div id="logo">
+					<h1>
+							<img src="{{ asset('bundles/frameworkPoke/img/logo.png') }}" alt="PokeNantes">
+					</h1>
+			</div>
+      <div class="utilisateur">
+           {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+               {{ 'Vous êtes loggé comme '~ app.user.username|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+               <a href="{{ path('fos_user_security_logout') }}">
+                  {{ 'Déconnexion'|trans({}, 'FOSUserBundle') }}
+               </a>
+           {% else %}
+               <a href="{{ path('fos_user_security_login') }}">
+                 {{ 'Connexion'|trans({}, 'FOSUserBundle') }}
+               </a>
+           {% endif %}
+       </div>
+	</div>
+{% endblock %}
+
+{% block section %}
 
         {% for type, messages in app.session.flashBag.all %}
             {% for message in messages %}
@@ -32,9 +37,5 @@
             {% block fos_user_content %}
             {% endblock fos_user_content %}
         </div>
-      {#% endblock %#}
-    </body>
-    {#% block footer %#}
-      {{ include('NosBundlesProductBundle:Template:footer.html.twig') }}
-    {#% endblock %#}
-</html>
+
+{% endblock %}

@@ -118,7 +118,9 @@ ul {
 .button .btn {
   margin: 0 10px 0 10px;
 }
-
+.button a.btn {
+padding: 15px;
+}
 .btn {
   background: #1c0243;
   background-image: -webkit-linear-gradient(top, #1c0243, #1c0243);
@@ -533,7 +535,9 @@ img{
     font-size: 14px;
     color: black;
 }
-
+#newProduit label{
+  display: none;
+}
 #newProduit tr{
   border-bottom: 1px solid #cfcad6;
 }

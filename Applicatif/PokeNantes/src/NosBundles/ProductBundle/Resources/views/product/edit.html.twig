@@ -116,8 +116,8 @@
 					</table>
 				<h6>* champs obligatoires</h6>
 				<div class="button">
-							<input class="btn" type="submit" action="edit" value="Edit"></input>
-							<input class="btn" type="submit" action="supp" value="Supprimer"></input>
+						<button class="btn" type="submit" action="edit" value="Edit"><span class="glyphicon glyphicon-pencil"> Modifier</span></button>
+						<a class="btn" value="Annuler" href="{{ path('product_index') }}"><span class="glyphicon glyphicon-remove"> Annuler</span></a>
 				</div>
 		</article>
 {% endblock %}
