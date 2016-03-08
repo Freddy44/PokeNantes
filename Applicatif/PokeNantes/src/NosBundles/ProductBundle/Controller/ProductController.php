@@ -27,8 +27,6 @@ class ProductController extends Controller
     public function indexAction()
     {
 
-
-      //if (isset($_GET['prod_cat'])){die(var_dump($_GET['prod_cat']));}
       if(isset($_GET['prod_cat']) ){
         $NameCategorie = $_GET['prod_cat'];
         return $this->redirectToRoute('product_show', array('cat' => $NameCategorie));
@@ -55,7 +53,6 @@ class ProductController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
-
             return $this->redirectToRoute('product_new', array('id' => $product->getProdId()));
         }
 
@@ -87,21 +84,6 @@ class ProductController extends Controller
       return $this->render('NosBundlesProductBundle:product:show.html.twig', array(
             'products' => $products,
       ));
-      //return $this->redirectToRoute('product_show', array('cat' => $cat));
-
-        /*$deleteForm = $this->createDeleteForm($product);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($product);
-            $em->flush();
-
-            return $this->redirectToRoute('product_show', array('id' => $product->getProdId()));
-        }
-        return $this->render('NosBundlesProductBundle:product:show.html.twig', array(
-            'product' => $product,
-            'delete_form' => $deleteForm->createView(),
-        ));*/
 
     }
 
