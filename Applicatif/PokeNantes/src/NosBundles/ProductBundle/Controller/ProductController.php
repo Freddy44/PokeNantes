@@ -7,7 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use NosBundles\ProductBundle\Entity\Product;
+use NosBundles\ProductBundle\Repository\ProductRepository;
 use NosBundles\ProductBundle\Form\ProductType;
+
 
 /**
  * Product controller.
@@ -19,18 +21,20 @@ class ProductController extends Controller
     /**
      * Lists all Product entities.
      *
-     * @Route("/index", name="product_index")
+     * @Route("/", name="product_index")
      * @Method("GET")
      */
     public function indexAction()
     {
 
-    	$em = $this->getDoctrine()->getManager();
 
-        $products = $em->getRepository('NosBundlesProductBundle:Product')->findAll();
-        return $this->render('NosBundlesProductBundle:product:index.html.twig', array(
-            'products' => $products,
-        ));
+      //if (isset($_GET['prod_cat'])){die(var_dump($_GET['prod_cat']));}
+      if(isset($_GET['prod_cat']) ){
+        $NameCategorie = $_GET['prod_cat'];
+        return $this->redirectToRoute('product_show', array('cat' => $NameCategorie));
+      }
+      return $this->render('NosBundlesProductBundle:product:index.html.twig');
+
     }
 
     /**
@@ -52,7 +56,7 @@ class ProductController extends Controller
             $em->persist($product);
             $em->flush();
 
-            return $this->redirectToRoute('product_show', array('id' => $product->getProdId()));
+            return $this->redirectToRoute('product_new', array('id' => $product->getProdId()));
         }
 
          return $this->render('NosBundlesProductBundle:product:new.html.twig', array(
@@ -64,17 +68,41 @@ class ProductController extends Controller
     /**
      * Finds and displays a Product entity.
      *
-     * @Route("/{id}", name="product_show")
+     * @Route("/show/{cat}/", name="product_show")
      * @Method("GET")
      */
-    public function showAction(Product $product)
+    public function showAction($cat)
     {
-        $deleteForm = $this->createDeleteForm($product);
+      $em = $this->getDoctrine()->getManager();
+      /* Si on reçoit un nom de catégorie valide alors on recherche les Films de cette catégorie uniquement */
+      if ($cat !== 'all') {
+          $products = $em->getRepository('NosBundlesProductBundle:Product')->findByprod_cat($cat);
+      }
 
+      if($cat === 'all'){
+          $products = $em->getRepository('NosBundlesProductBundle:Product')->findAll();
+          //die(var_dump($products));
+      }
+
+      return $this->render('NosBundlesProductBundle:product:show.html.twig', array(
+            'products' => $products,
+      ));
+      //return $this->redirectToRoute('product_show', array('cat' => $cat));
+
+        /*$deleteForm = $this->createDeleteForm($product);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($product);
+            $em->flush();
+
+            return $this->redirectToRoute('product_show', array('id' => $product->getProdId()));
+        }
         return $this->render('NosBundlesProductBundle:product:show.html.twig', array(
             'product' => $product,
             'delete_form' => $deleteForm->createView(),
-        ));
+        ));*/
+
     }
 
     /**

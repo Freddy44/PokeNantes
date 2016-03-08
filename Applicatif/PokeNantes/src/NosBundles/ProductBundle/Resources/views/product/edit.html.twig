@@ -1,21 +1,125 @@
-{% extends 'base.html.twig' %}
+{% extends 'NosBundlesProductBundle::layout.html.twig' %}
 
-{% block section %}
-    <h1>Product edit</h1>
+{# -- title -- #}
+{% block title %}Liste produit{% endblock %}
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+{# -- titre page -- #}
 
-    <ul>
-        <li>
-            <a href="{{ path('product_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+{% block title_page %}<h1>{{ product.prodName }}</h1>{% endblock %}
+
+{# -- contenu page -- #}
+
+{% block main %}
+			<article id="newProduit">
+					<table>
+						<caption>
+					  		<h3>PRODUIT</h3>
+					  	</caption>
+						<tr>
+							 <th>Nom du produit *</th>
+							 <td>
+							 	<input type="text" required="required" value="{{ product.prodName }}">
+							 </td>
+						</tr>
+					  	<tr>
+							<th>Catégorie du produit *</th>
+							<td>
+								<form>
+									<select name="nom" size="1">
+									<option>{{ product.prodCat }}
+									<option>Vêtements
+									<option>Déguisements
+									<option>Jeux Vidéos
+								  <option>Livres
+									<option>DVD
+									<option>CD
+									<option>Figurines
+									<option>Cartes de Collection
+									</select>
+								</form>
+							</td>
+					  	</tr>
+					  	<tr>
+							<th>Référence du produit *</th>
+							<td>
+							 	<input type="text" required="required" value="{{ product.prodRef }}">
+							</td>
+						</tr>
+					</table>
+
+					<table>
+						<caption>
+					  		<h3>QUANTITE</h3>
+					  	</caption>
+						<tr>
+								<th>Achats neufs</th>
+			 				 <td>
+			 					<input type="text" value="{{ product.prodQty }}">
+			 				 </td>
+			 				 <th>Etat du produit</th>
+			 				 <td>
+			 					<input type="text" value="{{ product.prodState }}">
+							 </td>
+						</tr>
+					</table>
+					{% for Provider in product.ProvidersList %}
+					<table>
+						<caption>
+					  		<h3>FOURNISSEUR</h3>
+					  	</caption>
+						<tr>
+							 <th>Nom du fournisseur *</th>
+							 <td>
+							 	<input type="text" required="required" value="{{ Provider.provName }}">
+							 </td>
+						</tr>
+					  	<tr>
+							<th>Numéro de téléphone *</th>
+							<td>
+								<input type="text" required="required" value="{{ Provider.provPhone }}">
+							</td>
+					  	</tr>
+							<th>Type de fournisseur</th>
+							<td>
+								<input type="text" required="required" value="{{ product.prodState }}">
+							</td>
+							</tr>
+					</table>
+					{% endfor %}
+					<table>
+						<caption>
+					  		<h3>PARTICULARITE</h3>
+					  	</caption>
+						<tr>
+							 <th>Total produits défaillants *</th>
+							 <td>
+							 	<input type="text" required="required" value="{{ product.prodQtyDefect }}">
+							 </td>
+						</tr>
+					</table>
+
+					<table>
+						<caption>
+					  		<h3>DESCRIPTIF</h3>
+					  	</caption>
+						<tr>
+							 <th>Nom de la photo (JPG/PNG) *</th>
+							 <td>
+							 	<input type="text" required="required" placeholder="nom de l'image" value="{{ product.prodPicture }}">
+								<img src="{{ asset('bundles/frameworkPoke/img/')}}{{ product.prodPicture }}"/>
+							 </td>
+						</tr>
+					  	<tr>
+					  		<th>Descriptif</th>
+								<td><textarea value="{{ product.prodDesc }}">{{ product.prodDesc }}</textarea></td>
+					  	</tr>
+					</table>
+				<h6>* champs obligatoires</h6>
+				<div class="button">
+					  <button href="{{ path('product_new') }}" class="btn" type="submit" action="edit" value="Edit"><span class="glyphicon glyphicon-ok"> Valider</span></button>
+						<button href="" class="btn" type="submit" action="delete" value="Delete"><span class="glyphicon glyphicon-trash"> Supprimer</span></button>
+						<a class="btn" value="Annuler" href="#"><span class="glyphicon glyphicon-remove"> Annuler</span></a>
+
+				</div>
+		</article>
 {% endblock %}

@@ -1,16 +1,102 @@
-{% extends 'base.html.twig' %}
+{% extends 'NosBundlesProductBundle::layout.html.twig' %}
 
-{% block section %}
-    <h1>Product creation</h1>
+{# -- title -- #}
+{% block title %}Ajouter produit{% endblock %}
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+{# -- titre page -- #}
 
-    <ul>
-        <li>
-            <a href="{{ path('product_index') }}">Back to the list</a>
-        </li>
-    </ul>
+{% block title_page %}<h1>Créer une fiche produit</h1>{% endblock %}
+
+{# -- contenu page -- #}
+
+{% block main %}
+{{ form_start(form) }}
+			<article id="newProduit">
+					<table>
+						<caption>
+					  		<h3>PRODUIT</h3>
+					  	</caption>
+						<tr>
+							 <th>Nom du produit *</th>
+							 <td>
+										{{ form_row(form.prodName) }}
+							 </td>
+						</tr>
+					  	<tr>
+							<th>Catégorie du produit *</th>
+							<td>
+								{{ form_row(form.prodCat) }}
+							</td>
+					  	</tr>
+					  	<tr>
+							<th>Référence du produit *</th>
+							<td>
+								{{ form_row(form.prodRef) }}
+							</td>
+						</tr>
+					</table>
+
+					<table>
+						<caption>
+					  		<h3>QUANTITE</h3>
+					  	</caption>
+						<tr>
+							 <th>Achats neufs</th>
+							 <td>
+							 	{{ form_row(form.prodQty) }}
+							 </td>
+							 <th>Etat du produit</th>
+							 <td>
+							 	{{ form_row(form.prodState) }}
+							 </td>
+						</tr>
+					</table>
+
+					<table>
+						<caption>
+					  		<h3>FOURNISSEUR</h3>
+					  	</caption>
+						<tr>
+							 <th>Nom du fournisseur *</th>
+							 <td>
+								{{ form_row(form.ProvidersList) }}
+							 </td>
+					</table>
+
+					<table>
+						<caption>
+					  		<h3>PARTICULARITE</h3>
+					  	</caption>
+						<tr>
+							 <th>Total produits défaillants *</th>
+							 <td>
+							 	{{ form_row(form.prodQtyDefect) }}
+							 </td>
+						</tr>
+					</table>
+
+					<table>
+						<caption>
+					  		<h3>DESCRIPTIF</h3>
+					  	</caption>
+						<tr>
+							 <th>Photo du produit (JPG/PNG) *</th>
+							 <td>
+								 {{ form_row(form.prodPicture) }}
+							 </td>
+						</tr>
+					  	<tr>
+					  		<th>Descriptif</th>
+								<td>
+									{{ form_row(form.prodDesc) }}
+								</td>
+					  	</tr>
+					</table>
+				<h6>* champs obligatoires</h6>
+				<div class="button">
+						<button href="{{ path('product_new') }}" class="btn" type="submit" action="edit" value="Edit"><span class="glyphicon glyphicon-ok"> Valider</span></button>
+						<a class="btn" value="Annuler" href="{{ path('product_index') }}"><span class="glyphicon glyphicon-remove"> Annuler</span></a>
+				</div>
+		</article>
+		{{ form_end(form) }}
 {% endblock %}
