@@ -10,6 +10,7 @@
 {# -- contenu page -- #}
 
 {% block main %}
+<form method="GET">
 			<article id="newProduit">
 					<table>
 						<caption>
@@ -23,20 +24,19 @@
 						</tr>
 					  	<tr>
 							<th>Catégorie du produit *</th>
-							<td>
-								<form>
-									<select name="nom" size="1">
-									<option>{{ product.prodCat }}
-									<option>Vêtements
-									<option>Déguisements
-									<option>Jeux Vidéos
-								  <option>Livres
-									<option>DVD
-									<option>CD
-									<option>Figurines
-									<option>Cartes de Collection
-									</select>
-								</form>
+							<td> {{ product.prodCat }}
+
+										<select name="nom" size="1" selected="{{ product.prodCat }}">
+										<option>Vêtements
+										<option>Déguisements
+										<option>Jeux Vidéos
+									  <option>Livres
+										<option>DVD
+										<option>CD
+										<option>Figurines
+										<option>Cartes de Collection
+										</select>
+
 							</td>
 					  	</tr>
 					  	<tr>
@@ -115,9 +115,11 @@
 					  	</tr>
 					</table>
 				<h6>* champs obligatoires</h6>
-				<div class="button">
-						<button class="btn" type="submit" action="edit" value="Edit"><span class="glyphicon glyphicon-pencil"> Modifier</span></button>
-						<a class="btn" value="Annuler" href="{{ path('product_index') }}"><span class="glyphicon glyphicon-remove"> Annuler</span></a>
+			  <div class="button">
+					  <a href="{{ path('product_edit', { 'id': product.prodId }) }}" class="btn" action="edit" value="Edit">valider</input>
+						<a href="{{ path('product_delete', { 'id': product.prodId }) }}" class="btn" value="Supprimer">Supprimer</a>
+						<p value="Annuler"><span class="glyphicon glyphicon-remove"> Annuler</span></p>
 				</div>
 		</article>
+		</form>
 {% endblock %}

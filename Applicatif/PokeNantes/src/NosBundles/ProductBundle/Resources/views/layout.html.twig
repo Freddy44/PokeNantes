@@ -47,7 +47,6 @@
     									<span class="box-animation">
     									<span class="front">Liste des catégories <span class="glyphicon glyphicon-chevron-down"></span></span>
     									<span class="back">Liste des catégories <span class="glyphicon glyphicon-chevron-up"></span></span>
-    									</button>
     									</span>
     							</a>
     					</li>
@@ -58,16 +57,16 @@
 <!-- sous menu liste des catégories -->
   <div class="container">
     <div class="collapse" id="demo">
-        <ul>
-            <li><a class="cat-nav" href="" name="vetements">Vêtements</a></li>
-            <li><a class="cat-nav" href="" name="deguisements">Déguisements</a></li>
-            <li><a class="cat-nav" href="" name="jeux">Jeux Vidéos</a></li>
-            <li><a class="cat-nav" href="" name="livres">Livres</a></li>
-            <li><a class="cat-nav" href="" name="dvd">DVD</a></li>
-            <li><a class="cat-nav" href="" name="cd">Musique</a></li>
-            <li><a class="cat-nav" href="" name="figurines">Figurines</a></li>
-            <li><a class="cat-nav" href="" name="cartes">Cartes Collection</a></li>
-        </ul>
+    <form action="{{ path('product_index') }}" method="GET" id="cat" class="categorie">
+          <button href="{{ path('product_index') }}" type="submit" class="cat-nav" value="vetements" name="prod_cat">Vêtements</button>
+          <button href="{{ path('product_index') }}" type="submit" class="cat-nav" value="deguisements" name="prod_cat">Déguisements</button>
+          <button href="{{ path('product_index') }}" type="submit" class="cat-nav" value="jeux" name="prod_cat">Jeux Vidéos</button>
+          <button href="{{ path('product_index') }}" type="submit" class="cat-nav" value="livres" name="prod_cat">Livres</button>
+          <button href="{{ path('product_index') }}" type="submit" class="cat-nav" value="dvd" name="prod_cat">DVD</button>
+          <button href="{{ path('product_index') }}" type="submit" class="cat-nav" value="cd" name="prod_cat">CD</button>
+          <button href="{{ path('product_index') }}" type="submit" class="cat-nav" value="figurines" name="prod_cat">Figurines</button>
+          <button href="{{ path('product_index') }}" type="submit" class="cat-nav" value="cartes" name="prod_cat">Cartes de Collection</button>
+    </form>
     </div>
 </div>
 {% endblock %}

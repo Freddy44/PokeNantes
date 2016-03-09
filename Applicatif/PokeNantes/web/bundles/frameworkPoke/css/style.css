@@ -466,7 +466,8 @@ img{
   text-align: center;
   height: auto;
   vertical-align: middle;
-  height: 50px;
+  height: 100px;
+  border:none;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -571,33 +572,58 @@ text-align: center;
 /*LISTE DES PRODUITS PAR CATEGORIE*/
 
 #listeCat{
-
+  border-top: 1px solid #1c0243;
 }
-#listeCat .liste{
-  display:inline-block;
-  margin: 1%;
-  border-bottom: 1px solid gainsboro;
+.prod, .prodrupture, .proddefaillant {
+  padding-bottom: 2%;
+  padding-top: 2%;
+  border-bottom: 1px solid #1c0243;
+  width: 100%;
+  display: inline-block;
 }
-#listeCat .liste span{
-  border-top: 1px solid gainsboro;
+#listeCat span{
   margin: 0;
   display: block;
 }
-#listeCat .liste div {
-  display:inline-block;
+
+.left, .right, .right-2{
+  display: inline-block;
 }
-#listeCat div h3{
+.left{
+  vertical-align: top;
+}
+
+#listeCat div h2 a{
   display: block;
-  margin: inherit;
+  color:#efa10b;
 }
+.mentionspeciale, .mentionspeciale-2{
+  width: 300px;
+  margin:0px;
+}
+.mentionspeciale img, .mentionspeciale-2 img{
+  padding: 2px;
+}
+.mentionspeciale{
+  color: #efa10b;
+}
+.mentionspeciale-2{
+  color: #1c0243;
+  display: inline-block;
+}
+
+b{
+  font-weight: 500;
+}
+
 #listeCat div ul{
-  padding: 1%;
+  padding: 0.2%;
+  display: inline-block;
 }
 
 #listeCat div ul li{
-  margin: 0 10px 0 10px;
-  border-left: 4px solid gainsboro;
-  padding-left: 13px;
+  padding-left: 5px;
+  padding-right: 20px;
 }
 #listeCat img{
 padding-right: 1%;
@@ -610,7 +636,6 @@ float: left;
 .buttonListeCat{
 display: block;
 float: right;
-width: 10%;
 }
 
 .buttonListeCat img{

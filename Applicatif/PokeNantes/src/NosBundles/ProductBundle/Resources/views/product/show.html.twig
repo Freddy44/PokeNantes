@@ -4,71 +4,100 @@
 {% block title %}Liste Catégorie{% endblock %}
 
 {# -- titre page -- #}
-{% block title_page %}<h1>Nom catégorie</h1>{% endblock %}
+{% block title_page %}<h1>{{ categorie }}</h1>{% endblock %}
 
 {# -- contenu page -- #}
 {% block main %}
-<article>
-{% for product in products %}
 <div class="container">
 	<div>
 			<ul>
-					<li><a class="cat-nav" href="" name="vetements">Tous les produits</a></li>
-					<li><a class="cat-nav" href="" name="deguisements">En rupture de stock</a></li>
-					<li><a class="cat-nav" href="" name="jeux">Produits défaillants</a></li>
-
+					<li><button target="all" class="cat-nav showall">Tous les produits</button></li>
+					<li><button target="rupture" type="button"  class="cat-nav show">En rupture de stock</button></li>
+					<li><button target="defaillant" type="button"  class="cat-nav show">Produits défaillants</button></li>
 			</ul>
 	</div>
 </div>
 <article id="listeCat">
-		<div class="liste">
-		<h3>
-		<a href="{{ path('product_edit', { 'id': product.prodId }) }}">
-			{{ product.prodName }}
-		</h3>
+	{% for product in products %}
+{% if product.prodQtyDefect != 0 %}
+<div class="proddefaillant prod">
+{% elseif product.prodQty == 0 %}
+<div class="prodrupture prod">
+{% else %}
+<div class="prod">
+{% endif %}
 		<div class="buttonListeCat">
-				<a href="a href="{{ path('product_edit', { 'id': product.prodId }) }}"" class="edit"><img  src="{{ asset('bundles/frameworkPoke/img/pictos/edit.png')}}"/></a>
-				<a href="#" class="remove"><img src="{{ asset('bundles/frameworkPoke/img/pictos/remove.png')}}"/></a>
-
+			<input href="{{ path('product_new') }}" class="btn" type="submit" action="edit" value="Edit"/>
+			<input type="submit" href="{{ path('product_delete', { 'id': product.prodId }) }}" action="delete" class="remove"/>
 		</div>
-			<span>
-				<img src="{{ asset('bundles/frameworkPoke/img/imgbase.png')}}"/>
+		<!-- IMAGE -->
+		<div class="left">
+		<span>
+			<img src="{{ asset('bundles/frameworkPoke/img/imgbase.png')}}"/>
+		</span>
+		</div>
+		<div class="right">
+			<h2>
+				<a href="{{ path('product_edit', { 'id': product.prodId }) }}">
+					{{ product.prodName }}
+				</a>
+			</h2>
+		<!-- REF / CATEGORIE -->
+		<div>
+			<ul>
+				<li><b>Catégorie : </b>{{ product.prodCat }}</li>
+				<li><b>Référence du produit : </b><a href="{{ path('product_edit', { 'id': product.prodId }) }}">{{ product.prodRef }}</a></li>
+			</ul>
+		</div>
+		<!-- BOUCLE QUATITÉ // RUPTURE DE STOCK -->
+		{% if product.prodQty != 0 %}
 				<div>
 						<ul>
-								<li><b>Référence du produit :</b><a href="{{ path('product_show', { 'id': product.prodId }) }}">{{ product.prodRef }}</a></li>
-								<li><b>Nom catégorie : </b>{{ product.prodCat }}</li>
-						</ul>
-				</div>
-			{% if product.prodQty != 0 %}
-					<div>
-							<ul>
-									<li><b>Quantité neuf : </b>{{ product.prodQty }}</li>
-									<li><b>Quantité occasion : </b></li>
+								<li><b>Quantité : </b>{{ product.prodQty }}</li>
+								<!-- IF OCCASION OU NEUF -->
+									{% if product.prodState == 'O' %}
+										<li><b>État du produit : </b>Occasion</li>
+									{% else %}
+										<li><b>État du produit : </b>Neuf</li>
+									{% endif %}
 							</ul>
 					</div>
 			{% else %}
 				{% for Provider in product.ProvidersList %}
+				 <div>
+						<ul>
+							<li><p class="mentionspeciale"><img src="{{ asset('bundles/frameworkPoke/img/pictos/mentionspe.png')}}"/> En rupture de stock</p>
+						</ul>
 					<div>
-							<img src="{{ asset('bundles/frameworkPoke/img/pictos/mentionspe.png')}}"/>
-							<p>En rupture de stock</p>
-							<ul>
-								<li>{{ Provider.provName }}</li>
-								<li>{{ Provider.provType }}</li>
-								<li>{{ Provider.provPhone }}</li>
-							</ul>
-					 </div>
+					</div>
+						<ul>
+							<li><b>Nom du fournisseur : </b>{{ Provider.provName }}</li>
+								<!-- <li><b></b>{{ Provider.provType }}</li> -->
+							<li><b>Numéro de téléphone : </b>{{ Provider.provPhone }}</li>
+						</ul>
+					</div>
 				{% endfor %}
 			{% endif %}
 			{% if product.prodQtyDefect != 0 %}
+					{% for Provider in product.ProvidersList %}
 					<div>
-						<img src="{{ asset('bundles/frameworkPoke/img/pictos/mentionspe.png')}}"/>
-						<p>En rupture de stock</p>
 						<ul>
-							<li><b>Quantité produit défectueux  : </b>{{ product.prodQtyDefect }}</li>
+							<li><p class="mentionspeciale"><img src="{{ asset('bundles/frameworkPoke/img/pictos/mentionspe.png')}}"/><b>Quantité produit Défectueux :</b> {{ product.prodQtyDefect }}</p></li>
 						</ul>
 					</div>
+					<div>
+						<ul>
+							<li><b>Nom du fournisseur : </b>{{ Provider.provName }}</li>
+								<!-- <li><b></b>{{ Provider.provType }}</li> -->
+							<li><b>Numéro de téléphone : </b>{{ Provider.provPhone }}</li>
+						</ul>
+					</div>
+					{% endfor %}
 			{% endif %}
 		</div>
+		<!-- fin div class="right" -->
+	</div>
 {% endfor %}
 </article>
+<script src="{{ asset('bundles/frameworkPoke/js/show.js') }}"></script>
 {% endblock %}

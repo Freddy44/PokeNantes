@@ -27,27 +27,13 @@ class ProductController extends Controller
     public function indexAction()
     {
 
-    	$em = $this->getDoctrine()->getManager();
-      //$NameCategorie = '';
-      if(isset($_GET['prod_cat'])){
-            $NameCategorie = $_GET['prod_cat'];
-
-            //die(var_dump($NameCategorie));
-            /* Si on reçoit un nom de catégorie valide alors on recherche les Films de cette catégorie uniquement */
-            if (!empty($NameCategorie)) {
-                $products = $em->getRepository('NosBundlesProductBundle:Product')->findByprod_cat($NameCategorie);
-            }
-
-            if(empty($NameCategorie)){
-                  $products = $em->getRepository('NosBundlesProductBundle:Product')->findAll();
-            }
-            return $this->render('NosBundlesProductBundle:product:show.html.twig', array(
-                  'products' => $products,
-              ));
+      if(isset($_GET['prod_cat']) ){
+        $NameCategorie = $_GET['prod_cat'];
+        return $this->redirectToRoute('product_show', array('cat' => $NameCategorie));
       }
+      return $this->render('NosBundlesProductBundle:product:index.html.twig');
 
-      return $this->redirect('NosBundlesProductBundle:product:index.html.twig');
-      }
+    }
 
     /**
      * Creates a new Product entity.
@@ -67,7 +53,6 @@ class ProductController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
-
             return $this->redirectToRoute('product_new', array('id' => $product->getProdId()));
         }
 
@@ -80,18 +65,40 @@ class ProductController extends Controller
     /**
      * Finds and displays a Product entity.
      *
-     * @Route("/{id}", name="product_show")
+     * @Route("/show/{cat}/", name="product_show")
      * @Method("GET")
      */
-    public function showAction(Product $product)
-    {
-        $deleteForm = $this->createDeleteForm($product);
+     public function showAction($cat)
+     {
+       //Tableau permettant de récupérer le libellé de la catégorie
+       $arrayCat = array(
+         "all" => "Liste des produits",
+         "vetements" => "Vêtements",
+         "deguisements" => "Déguisements",
+         "jeux" => "Jeux vidéos",
+         "livres" => "Livres",
+         "dvd" => "DVD",
+         "cd" => "CD",
+         "figurines" => "Figurines",
+         "cartes" => "Cartes de collection",
+         );
+       $categorie = $arrayCat[$cat];
+       $em = $this->getDoctrine()->getManager();
+       /* Si on reçoit un nom de catégorie valide alors on recherche les Films de cette catégorie uniquement */
+       if ($cat !== 'all') {
+           $products = $em->getRepository('NosBundlesProductBundle:Product')->findByprod_cat($cat);
+       }
 
-        return $this->render('NosBundlesProductBundle:product:show.html.twig', array(
-            'product' => $product,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
+       if($cat === 'all'){
+           $products = $em->getRepository('NosBundlesProductBundle:Product')->findAll();
+           //die(var_dump($products));
+       }
+
+       return $this->render('NosBundlesProductBundle:product:show.html.twig', array(
+             'products' => $products, 'categorie' => $categorie,
+       ));
+
+     }
 
     /**
      * Displays a form to edit an existing Product entity.
@@ -124,7 +131,7 @@ class ProductController extends Controller
      * Deletes a Product entity.
      *
      * @Route("/{id}", name="product_delete")
-     * @Method("DELETE")
+     * @Method({"DELETE", "GET"})
      */
     public function deleteAction(Request $request, Product $product)
     {
