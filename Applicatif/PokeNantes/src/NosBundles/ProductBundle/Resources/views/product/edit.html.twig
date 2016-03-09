@@ -13,8 +13,6 @@
 
 <form action="{{ path('product_index') }}" method="GET" id="cat" class="categorie">
 			<button href="{{ path('product_index') }}" form="cat" class="cat-nav" value="all" name="prod_cat"><span class=" glyphicon glyphicon-triangle-left"></span> Retour à la liste de tous les produits</button>
-			<button href="{{ path('product_index') }}" form="cat" class="cat-nav" value="{{product.prodCat}}" name="prod_cat"><span class=" glyphicon glyphicon-triangle-left"></span> Retour à la liste de tous les produits</button>
-
 </form>
 
 {{ form_start(edit_form) }}
