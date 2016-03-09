@@ -29,7 +29,9 @@ class ProductType extends AbstractType
                                            'cartes' => 'Cartes de collection',),
                                            'label'=>'Categorie de produit : '))
             ->add('prodDesc','textarea',array('label'=>'Descriptif : '))
-            ->add('prodState', 'choice', array('choices' => array('O'=>'Occasion','N'=>'Neuf'),'label'=>'Etat : '))
+
+            ->add('prodState', 'choice', array('choices' => array('Occasion'=>'Occasion','Neuf'=>'Neuf'),'label'=>'Etat : '))
+
             ->add('prodPicture', 'text')
             ->add('prodQty', 'integer', array('label'=>'Quantite : '))
             ->add('prodQtyDefect', 'integer', array('label'=>'Quantite defectueuse: '))

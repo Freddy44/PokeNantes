@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class MonController extends Controller
 {
     /**
-     * @Route("/", name="UserBundle_page")
+     * @Route("/mapage", name="UserBundle_page")
      */
     public function indexAction()
     {

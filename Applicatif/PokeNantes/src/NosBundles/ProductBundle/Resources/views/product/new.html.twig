@@ -10,6 +10,7 @@
 {# -- contenu page -- #}
 
 {% block main %}
+
 {{ form_start(form) }}
 	<form>
 			<article id="newProduit">
@@ -20,8 +21,8 @@
 						<tr>
 							 <th>Nom du produit *</th>
 							 <td>
-										{{ form_row(form.prodName) }}
-							 </td>
+								 {{ form_row(form.prodName) }}
+	 					 </td>
 						</tr>
 					  	<tr>
 							<th>Catégorie du produit *</th>
@@ -32,6 +33,7 @@
 					  	<tr>
 							<th>Référence du produit *</th>
 							<td>
+
 								{{ form_row(form.prodRef) }}
 							</td>
 						</tr>
@@ -60,6 +62,7 @@
 						<tr>
 							 <th>Nom du fournisseur *</th>
 							 <td>
+
 								{{ form_row(form.ProvidersList) }}
 							 </td>
 					</table>
@@ -71,7 +74,9 @@
 						<tr>
 							 <th>Total produits défaillants *</th>
 							 <td>
+
 							 	{{ form_row(form.prodQtyDefect) }}
+
 							 </td>
 						</tr>
 					</table>
@@ -83,11 +88,14 @@
 						<tr>
 							 <th>Photo du produit (JPG/PNG) *</th>
 							 <td>
+
 								 {{ form_row(form.prodPicture) }}
+
 							 </td>
 						</tr>
 					  	<tr>
 					  		<th>Descriptif</th>
+
 								<td>
 									{{ form_row(form.prodDesc) }}
 								</td>
@@ -95,10 +103,10 @@
 					</table>
 				<h6>* champs obligatoires</h6>
 				<div class="button">
-					<input href="{{ path('product_new')}}" class="btn" type="submit" value="Valider"/>
-					<p value="Annuler"><span class="glyphicon glyphicon-remove"> Annuler</span></p>
+					  <input href="{{ path('product_new') }}" class="btn" type="submit" action="edit" value="Valider"/>
+						<p value="Annuler"><span class="glyphicon glyphicon-remove">Annuler</span></p>
 				</div>
-				</form>
-		{{ form_end(form) }}
-		</article>
+		</form>
+{{ form_end(form) }}
+
 {% endblock %}

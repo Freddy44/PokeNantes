@@ -45,8 +45,8 @@
     									<span class="glyphicon glyphicon-collapse-down"></span>
     										Liste des catégories
     									<span class="box-animation">
-    									<span class="front">Liste des catégories <span class="glyphicon glyphicon-chevron-down"></span></span>
-    									<span class="back">Liste des catégories <span class="glyphicon glyphicon-chevron-up"></span></span>
+    									    <span class="front">Liste des catégories <span class="glyphicon glyphicon-chevron-down"></span></span>
+    									    <span class="back">Liste des catégories <span class="glyphicon glyphicon-chevron-up"></span></span>
     									</span>
     							</a>
     					</li>
@@ -57,6 +57,7 @@
 <!-- sous menu liste des catégories -->
   <div class="container">
     <div class="collapse" id="demo">
+
     <form action="{{ path('product_index') }}" method="GET" id="cat" class="categorie">
           <button href="{{ path('product_index') }}" type="submit" class="cat-nav" value="vetements" name="prod_cat">Vêtements</button>
           <button href="{{ path('product_index') }}" type="submit" class="cat-nav" value="deguisements" name="prod_cat">Déguisements</button>

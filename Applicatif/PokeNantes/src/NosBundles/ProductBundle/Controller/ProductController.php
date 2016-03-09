@@ -50,9 +50,11 @@ class ProductController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
+
             return $this->redirectToRoute('product_new', array('id' => $product->getProdId()));
         }
 
@@ -68,6 +70,7 @@ class ProductController extends Controller
      * @Route("/show/{cat}/", name="product_show")
      * @Method("GET")
      */
+
      public function showAction($cat)
      {
        //Tableau permettant de récupérer le libellé de la catégorie
@@ -108,11 +111,13 @@ class ProductController extends Controller
      */
     public function editAction(Request $request, Product $product)
     {
+        //var_dump($product);
         $deleteForm = $this->createDeleteForm($product);
         $editForm = $this->createForm('NosBundles\ProductBundle\Form\ProductType', $product);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
@@ -135,10 +140,12 @@ class ProductController extends Controller
      */
     public function deleteAction(Request $request, Product $product)
     {
+
         $form = $this->createDeleteForm($product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //die('delete submit');
             $em = $this->getDoctrine()->getManager();
             $em->remove($product);
             $em->flush();

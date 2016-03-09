@@ -11,21 +11,25 @@
 
 {% block main %}
 		<div class="accueil">
+
 			<a href="{{ path('product_new') }}" class="v-violet"><p>CRÉER FICHE PRODUIT</p></a>
-			<button href="" form="cat" class="v" value="all" name="prod_cat">AFFICHER TOUS LES PRODUITS</button>
+			<button href="{{ path('product_index') }}" form="cat" class="v" value="all" name="prod_cat"><p>AFFICHER TOUS LES PRODUITS</p></button>
+
 		</div>
 
 		<div class="categorie-tout">
 			<img src="{{ asset('bundles/frameworkPoke/img/picto-h2.png') }}"/><h2>Toutes les catégories</h2>
-			<form action="{{ path('product_index') }}" id="cat" method="GET"  class="categorie">
-						<button href="{{ path('product_index') }}" type="submit" class="v" value="vetements" name="prod_cat">Vêtements</button>
-						<button href="{{ path('product_index') }}" type="submit" class="v" value="deguisements" name="prod_cat">Déguisements</button>
-						<button href="{{ path('product_index') }}" type="submit" class="v" value="jeux" name="prod_cat">Jeux Vidéos</button>
-						<button href="{{ path('product_index') }}" type="submit" class="v" value="livres" name="prod_cat">Livres</button>
-						<button href="{{ path('product_index') }}" type="submit" class="v" value="dvd" name="prod_cat">DVD</button>
-						<button href="{{ path('product_index') }}" type="submit" class="v" value="cd" name="prod_cat">CD</button>
-						<button href="{{ path('product_index') }}" type="submit" class="v" value="figurines" name="prod_cat">Figurines</button>
-						<button href="{{ path('product_index') }}" type="submit" class="v" value="cartes" name="prod_cat">Cartes de Collection</button<>
+
+			<form action="{{ path('product_index') }}" method="GET" class="categorie" id="cat">
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="vetements" name="prod_cat">Vêtements</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="deguisements" name="prod_cat">Déguisements</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="jeux" name="prod_cat">Jeux Vidéos</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="livres" name="prod_cat">Livres</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="dvd" name="prod_cat">DVD</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="cd" name="prod_cat">CD</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="figurines" name="prod_cat">Figurines</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="cartes" name="prod_cat">Cartes de Collection</button>
+
 			</form>
 		</div>
 

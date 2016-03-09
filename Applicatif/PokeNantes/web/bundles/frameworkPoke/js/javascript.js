@@ -9,5 +9,9 @@ $(document).ready(function(){
   if($("#accueil") = on.("click")){
   $(".back").on("click", function() {
    $(".front").css("color", "red");
+<<<<<<< HEAD
  });
+=======
+    });
+>>>>>>> origin/master
   }

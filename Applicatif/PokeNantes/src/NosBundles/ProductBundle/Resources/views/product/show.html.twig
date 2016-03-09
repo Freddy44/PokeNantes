@@ -27,7 +27,8 @@
 <div class="prod">
 {% endif %}
 		<div class="buttonListeCat">
-			<input href="{{ path('product_edit', { 'id': product.prodId }) }}" class="btn" type="submit" action="edit" value="Détail"/>
+			<a href="{{ path('product_edit', {'id':product.prodId}) }}" class="btn" type="submit" action="edit" value="Détail">Détail</a>
+			<a href="{{ path('product_delete', {'id':product.prodId}) }}" class="btn" type="submit" action="delete" value="Supprimer">Supprimer</a>
 		</div>
 		<!-- IMAGE -->
 		<div class="left">

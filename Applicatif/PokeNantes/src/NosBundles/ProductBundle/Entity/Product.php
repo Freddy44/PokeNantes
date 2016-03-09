@@ -60,14 +60,14 @@ class Product
      * @ORM\Column(name="prod_qty", type="integer", nullable=false)
      */
     protected $prodQty;
-    
+
     /**
      * @var integer
      *
      * @ORM\Column(name="prod_qty_defect", type="integer", nullable=false)
      */
     protected $prodQtyDefect;
-    
+
 
     /**
      * @var integer
@@ -77,7 +77,7 @@ class Product
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $prodId;
-    
+
     /**
      * Bidirectional
      *
@@ -88,15 +88,15 @@ class Product
      * )
      */
     protected $ProvidersList;
-    
+
     /**
      * Constructor
      */
     public function __construct()
     {
     	$this->ProvidersList = new \Doctrine\Common\Collections\ArrayCollection();
-    }    
-	
+    }
+
 	/**
 	 *
 	 * @return the string
@@ -104,7 +104,7 @@ class Product
 	public function getProdRef() {
 		return $this->prodRef;
 	}
-	
+
 	/**
 	 *
 	 * @param
@@ -114,7 +114,7 @@ class Product
 		$this->prodRef = $prodRef;
 		return $this;
 	}
-	
+
 	/**
 	 *
 	 * @return the string
@@ -122,7 +122,7 @@ class Product
 	public function getProdName() {
 		return $this->prodName;
 	}
-	
+
 	/**
 	 *
 	 * @param
@@ -132,7 +132,7 @@ class Product
 		$this->prodName = $prodName;
 		return $this;
 	}
-	
+
 	/**
 	 *
 	 * @return the string
@@ -140,7 +140,7 @@ class Product
 	public function getProdCat() {
 		return $this->prodCat;
 	}
-	
+
 	/**
 	 *
 	 * @param
@@ -150,7 +150,7 @@ class Product
 		$this->prodCat = $prodCat;
 		return $this;
 	}
-	
+
 	/**
 	 *
 	 * @return the string
@@ -158,7 +158,7 @@ class Product
 	public function getProdDesc() {
 		return $this->prodDesc;
 	}
-	
+
 	/**
 	 *
 	 * @param
@@ -168,7 +168,7 @@ class Product
 		$this->prodDesc = $prodDesc;
 		return $this;
 	}
-	
+
 	/**
 	 *
 	 * @return the string
@@ -176,7 +176,7 @@ class Product
 	public function getProdState() {
 		return $this->prodState;
 	}
-	
+
 	/**
 	 *
 	 * @param
@@ -186,7 +186,7 @@ class Product
 		$this->prodState = $prodState;
 		return $this;
 	}
-	
+
 	/**
 	 *
 	 * @return the string
@@ -194,7 +194,7 @@ class Product
 	public function getProdPicture() {
 		return $this->prodPicture;
 	}
-	
+
 	/**
 	 *
 	 * @param
@@ -204,7 +204,7 @@ class Product
 		$this->prodPicture = $prodPicture;
 		return $this;
 	}
-	
+
 	/**
 	 *
 	 * @return the integer
@@ -212,7 +212,7 @@ class Product
 	public function getProdQty() {
 		return $this->prodQty;
 	}
-	
+
 	/**
 	 *
 	 * @param
@@ -222,7 +222,7 @@ class Product
 		$this->prodQty = $prodQty;
 		return $this;
 	}
-	
+
 	/**
 	 *
 	 * @return the integer
@@ -230,7 +230,7 @@ class Product
 	public function getProdId() {
 		return $this->prodId;
 	}
-	
+
 	/**
 	 *
 	 * @param
@@ -240,7 +240,7 @@ class Product
 		$this->prodId = $prodId;
 		return $this;
 	}
-	
+
     /**
      * Add ProvidersList
      *
@@ -267,13 +267,13 @@ class Product
     /**
      * Get ProvidersList
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProvidersList()
     {
         return $this->ProvidersList;
     }
-	
+
 	/**
 	 *
 	 * @return the integer
@@ -281,7 +281,7 @@ class Product
 	public function getProdQtyDefect() {
 		return $this->prodQtyDefect;
 	}
-	
+
 	/**
 	 *
 	 * @param
@@ -291,14 +291,14 @@ class Product
 		$this->prodQtyDefect = $prodQtyDefect;
 		return $this;
 	}
-	
+
 	/**
 	 *
-	 * @param unknown_type $ProvidersList        	
+	 * @param unknown_type $ProvidersList
 	 */
 	public function setProvidersList($ProvidersList) {
 		$this->ProvidersList = $ProvidersList;
 		return $this;
 	}
-	
+
 }

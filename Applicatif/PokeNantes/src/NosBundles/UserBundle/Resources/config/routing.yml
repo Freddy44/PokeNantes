@@ -1,11 +1,11 @@
 
 
 UserBundle_index:
-    path:     /index
-    defaults: { _controller: NosBundlesUserBundle:Default:index}
+    path:     /
+    defaults: { _controller: NosBundlesUserBundle:User:index}
 
 UserBundle_page:
-    path:     /
+    path:     /mapage
     defaults: { _controller: NosBundlesUserBundle:Mon:index}
 
 fos_user_security:
