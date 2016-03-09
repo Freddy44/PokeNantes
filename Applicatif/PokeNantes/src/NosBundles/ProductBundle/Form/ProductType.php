@@ -20,7 +20,7 @@ class ProductType extends AbstractType
             ->add('prodName','text',array('label'=>'Nom du produit : '))
             ->add('prodCat','choice',array('choices' => array(
                                            'vetements' => 'Vêtements',
-                                           'deguisement' => 'Déguisements',
+                                           'deguisements' => 'Déguisements',
                                            'jeux' => 'Jeux vidéos',
                                            'livres' => 'Livres',
                                            'dvd' => 'DVD',
