@@ -551,6 +551,10 @@ border: 1px solid #cfcad6;
 padding: 6px;
 }
 
+.button .btn{
+width: auto !important;
+}
+
 #newProduit select{
 width: 100%;
 background: none;

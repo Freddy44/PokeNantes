@@ -1,24 +1,10 @@
-<<<<<<< Updated upstream
 {#% extends "FOSUserBundle::layout.html.twig" %#}
 {% extends "NosBundlesUserBundle::layout.html.twig" %}
 
 {% block title %}PokeNantes{% endblock %}
 
-<<<<<<< Updated upstream
-=======
-=======
-
-
-{#% extends "FOSUserBundle::layout.html.twig" %#}
-{% extends "NosBundlesUserBundle::layout.html.twig" %}
-
->>>>>>> Stashed changes
-
-
->>>>>>> Stashed changes
 {% block fos_user_content %}
 
-<<<<<<< Updated upstream
 <div class="back-titre-page">
 	<div class="zone-titre-page"><img src="{{asset('bundles/frameworkPoke/img/picto-h2.png')}}"/>
 		<h2>
@@ -26,8 +12,6 @@
 		</h2>
 	</div>
 </div>
-=======
->>>>>>> Stashed changes
 
   {# S'il y a une erreur, on l'affiche dans un joli cadre #}
 
@@ -38,12 +22,11 @@
 	  {% endif %}
 
   {# Le formulaire, avec URL de soumission vers la route « login_check »  #}
-<<<<<<< Updated upstream
+
   <form  class="form-connexion" action="{{ path("fos_user_security_check") }}" method="post">
-=======
-<<<<<<< Updated upstream
+
   <form action="{{ path("fos_user_security_check") }}" method="post" class="form-connexion">
->>>>>>> Stashed changes
+
       <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
 			<div class="control-group">
@@ -80,43 +63,8 @@
 
       <div class="button">
           <input class="btn" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" class="btn btn-primary" />
-=======
-<p> Ma vue login </p>
-<form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal">
-      <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-
-      <div class="control-group">
-          <label class="control-label" for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
-          <div class="controls">
-              <div class="input-prepend">
-                  <span class="add-on"><i class="icon-user"></i></span><input type="text" id="username" name="_username" value="{{ last_username }}" />
-              </div>
-          </div>
-      </div>
-
-      <div class="control-group">
-          <label class="control-label" for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
-          <div class="controls">
-              <div class="input-prepend">
-                  <span class="add-on"><i class="icon-lock"></i></span><input type="password" id="password" name="_password" />
-              </div>
-          </div>
-      </div>
-
-      <div class="control-group">
-          <label class="control-label" for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
-          <div class="controls">
-              <div class="input-prepend">
-                  <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-              </div>
-          </div>
-      </div>
-
-      <div>
-          <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" class="btn btn-primary" />
->>>>>>> Stashed changes
-      </div>
-  </form>
+				</div>
+	  </form>	
 </main>
 
 <script src="{{ asset('bundles/frameworkPoke/js/classie.js') }}"></script>
