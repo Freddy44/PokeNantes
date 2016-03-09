@@ -18,12 +18,17 @@ class ProductType extends AbstractType
     	$builder
             ->add('prodRef','text',array('label'=>'Reference du produit : '))
             ->add('prodName','text',array('label'=>'Nom du produit : '))
-            ->add('prodCat','choice',
-                array('choices' => array('vetements'=>'Vêtements','deguisements'=>'Déguisements',
-                                  'jeux'=>'Jeux vidéos','livres'=>'Livres', 'dvd'=>'DVD', 'cd'=>'CD',
-                                  'figurines'=>'Figurines', 'cartes'=>'Cartes à collectionner'),
-                      'label'=>'Catégorie : '))
-            ->add('prodDesc','text',array('label'=>'Descriptif : '))
+            ->add('prodCat','choice',array('choices' => array(
+                                           'vetements' => 'Vêtements',
+                                           'deguisement' => 'Déguisements',
+                                           'jeux' => 'Jeux vidéos',
+                                           'livres' => 'Livres',
+                                           'dvd' => 'DVD',
+                                           'cd' => 'CD',
+                                           'figurines' => 'Figurines',
+                                           'cartes' => 'Cartes de collection',),
+                                           'label'=>'Categorie de produit : '))
+            ->add('prodDesc','textarea',array('label'=>'Descriptif : '))
             ->add('prodState', 'choice', array('choices' => array('Occasion'=>'Occasion','Neuf'=>'Neuf'),'label'=>'Etat : '))
             ->add('prodPicture', 'text')
             ->add('prodQty', 'integer', array('label'=>'Quantite : '))

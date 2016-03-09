@@ -1,0 +1,91 @@
+{% extends "::base.html.twig" %}
+
+{% block header %}
+  <nav class="nav-container">
+    <!-- Fichier header commun -->
+          <!-- logo Pokenantes -->
+          <div id="logo">
+             <img src="{{ asset ('bundles/frameworkPoke/img/logo.png')}}" alt="PokeNantes">
+          </div>
+
+          <!-- Zone nom utilisateur connecté -->
+          <div class="utilisateur">
+              {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                  <img src="{{ asset('bundles/frameworkPoke/img/user.png')}}"/>{{ 'Bonjour '~ app.user.username|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                  <a href="{{ path('fos_user_security_logout') }}">
+                     {{ 'Déconnexion'|trans({}, 'FOSUserBundle') }}
+                  </a>
+              {% else %}
+                  <a href="{{ path('fos_user_security_login') }}">
+                    {{ 'Connexion'|trans({}, 'FOSUserBundle') }}
+                  </a>
+              {% endif %}
+          </div>
+
+          <!-- Menu rotatif -->
+    			<div class="menu">
+    					<ul class="menu-list">
+    							<li><a href="{{ path('product_index') }}" class="hyper-link">Accueil
+    											<span class="box-animation">
+    											<span class="front">Accueil</span>
+    											<span class="back">Accueil</span>
+    											</span>
+    									</a>
+    							</li>
+    							<li>
+    									<a href="{{ path('product_new') }}" class="hyper-link">Créer fiche produit
+    											<span class="box-animation">
+    											<span class="front">Créer fiche produit</span>
+    											<span class="back">Créer fiche produit</span>
+    											</span>
+    									</a>
+    							</li>
+    							<li class="li-cat">
+    							<a href="#" type="button" class="hyper-link" data-toggle="collapse" data-target="#demo">
+    									<span class="glyphicon glyphicon-collapse-down"></span>
+    										Liste des catégories
+    									<span class="box-animation">
+    									<span class="front">Liste des catégories <span class="glyphicon glyphicon-chevron-down"></span></span>
+    									<span class="back">Liste des catégories <span class="glyphicon glyphicon-chevron-up"></span></span>
+    									</button>
+    									</span>
+    							</a>
+    					</li>
+    					</ul>
+    			</div>
+</nav>
+
+<!-- sous menu liste des catégories -->
+  <div class="container">
+    <div class="collapse" id="demo">
+      <form action="{{ path('product_index') }}" method="GET" class="categorie" id="cat">
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="vetements" name="prod_cat">Vêtements</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="deguisements" name="prod_cat">Déguisements</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="jeux" name="prod_cat">Jeux Vidéos</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="livres" name="prod_cat">Livres</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="dvd" name="prod_cat">DVD</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="cd" name="prod_cat">CD</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="figurines" name="prod_cat">Figurines</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="cartes" name="prod_cat">Cartes de Collection</button>
+			</form>
+    </div>
+</div>
+{% endblock %}
+
+{% block section %}
+
+  {# ZONE DE TITRE DE LA PAGE #}
+    <div class="back-titre-page">
+      <div class="zone-titre-page"><img src="{{ asset ('bundles/frameworkPoke/img/picto-h2.png')}}"/>
+        {% block title_page %}{% endblock %}
+      </div>
+    </div>
+
+    {# CONTENU DES PAGES #}
+    <main>
+        {% block main %}
+            {# appel des différentes vues qui sont dans le dossier 'default' #}
+        {% endblock %}
+    </main>
+
+{% endblock %}

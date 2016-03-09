@@ -1,65 +1,33 @@
-{% extends '::base.html.twig' %}
+{% extends 'NosBundlesProductBundle::layout.html.twig' %}
 
+{# -- title -- #}
+{% block title %}Accueil{% endblock %}
 
-{% block section %}
-    <h1>Product list</h1>
+{# -- titre page -- #}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Prodref</th>
-                <th>Prodname</th>
-                <th>Prodcat</th>
-                <th>Proddesc</th>
-                <th>Prodstate</th>
-                <th>Prodpicture</th>
-                <th>Prodqty</th>
-                <th>Prodqtydefect</th>
-                <th>Prodid</th>
-                <th>Provider</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
-            <tr>
-                <td><a href="{#{ path('product_show', { 'id': product.prodId }) }#}">{{ product.prodRef }}</a></td>
-                <td>{{ product.prodName }}</td>
-                <td>{{ product.prodCat }}</td>
-                <td>{{ product.prodDesc }}</td>
-                <td>{{ product.prodState }}</td>
-                <td>{{ product.prodPicture }}</td>
-                <td>{{ product.prodQty }}</td>
-                <td>{{ product.prodQtyDefect }}</td>
-                <td>{{ product.prodId }}</td>
-                <td><div class="tags-list">{% for Provider in product.ProvidersList %}
-           			{% if loop.index > 1 %}
-          			{% endif %} <span class="badge">
-          							{{ Provider.provName }}
-          							{{ Provider.provType }}
-          							{{ Provider.provPhone }}
-          							<br />
-          					    </span>{% endfor %}
-          			</div>
-          		</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('product_show', { 'id': product.prodId }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('product_edit', { 'id': product.prodId }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+{% block title_page %}<h1>Acceuil</h1>{% endblock %}
 
-    <ul>
-        <li>
-            <a href="{{ path('product_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+{# -- contenu page -- #}
+
+{% block main %}
+		<div class="accueil">
+
+			<a href="{{ path('product_new') }}" class="v-violet"><p>CRÉER FICHE PRODUIT</p></a>
+			<button href="{{ path('product_index') }}" form="cat" class="v" value="all" name="prod_cat"><p>AFFICHER TOUS LES PRODUITS</p></button>
+		</div>
+
+		<div class="categorie-tout">
+			<img src="{{ asset('bundles/frameworkPoke/img/picto-h2.png') }}"/><h2>Toutes les catégories</h2>
+			<form action="{{ path('product_index') }}" method="GET" class="categorie" id="cat">
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="vetements" name="prod_cat">Vêtements</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="deguisements" name="prod_cat">Déguisements</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="jeux" name="prod_cat">Jeux Vidéos</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="livres" name="prod_cat">Livres</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="dvd" name="prod_cat">DVD</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="cd" name="prod_cat">CD</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="figurines" name="prod_cat">Figurines</button>
+						<button href="{{ path('product_index') }}" form="cat" class="v" value="cartes" name="prod_cat">Cartes de Collection</button>
+			</form>
+		</div>
+
 {% endblock %}

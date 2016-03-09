@@ -1,21 +1,106 @@
-{% extends 'base.html.twig' %}
+{% extends 'NosBundlesProductBundle::layout.html.twig' %}
 
-{% block section %}
-    <h1>Product edit</h1>
+{# -- title -- #}
+{% block title %}Liste produit{% endblock %}
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+{# -- titre page -- #}
 
-    <ul>
-        <li>
-            <a href="{{ path('product_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+{% block title_page %}<h1>{{ product.prodName }}</h1>{% endblock %}
+
+{# -- contenu page -- #}
+
+{% block main %}
+{{ form_start(edit_form) }}
+			<article id="newProduit">
+					<table>
+						<caption>
+					  		<h3>PRODUIT</h3>
+					  	</caption>
+						<tr>
+							 <th>Nom du produit *</th>
+							 <td>
+							 	{{ form_row(edit_form.prodName) }}
+							 </td>
+						</tr>
+					  	<tr>
+							<th>Catégorie du produit *</th>
+							<td>
+										{{ form_row(edit_form.prodCat) }}
+							</td>
+					  	</tr>
+					  	<tr>
+							<th>Référence du produit *</th>
+							<td>
+							 	{{ form_row(edit_form.prodRef) }}
+							</td>
+						</tr>
+					</table>
+
+					<table>
+						<caption>
+					  		<h3>QUANTITE</h3>
+					  	</caption>
+						<tr>
+								<th>Achats neufs</th>
+			 				 <td>
+			 					{{ form_row(edit_form.prodQty) }}
+			 				 </td>
+			 				 <th>Etat du produit</th>
+			 				 <td>
+			 					{{ form_row(edit_form.prodState) }}
+							 </td>
+						</tr>
+					</table>
+					{% for Provider in product.ProvidersList %}
+					<table>
+						<caption>
+					  		<h3>FOURNISSEUR</h3>
+					  	</caption>
+						<tr>
+							 <th>Nom du fournisseur *</th>
+							 <td>{{ form_row(edit_form.ProvidersList) }}</td>
+						</tr>
+					</table>
+					{% endfor %}
+					<table>
+						<caption>
+					  		<h3>PARTICULARITE</h3>
+					  	</caption>
+						<tr>
+							 <th>Total produits défaillants *</th>
+							 <td>
+							 	{{ form_row(edit_form.prodQtyDefect) }}
+							 </td>
+						</tr>
+					</table>
+
+					<table>
+						<caption>
+					  		<h3>DESCRIPTIF</h3>
+					  	</caption>
+						<tr>
+							 <th>Nom de la photo (JPG/PNG) *</th>
+							 <td>
+
+								{{ form_row(edit_form.prodPicture) }}
+								<img src="{{ asset('bundles/frameworkPoke/img/')}}{{ product.prodPicture }}"/>
+							 </td>
+						</tr>
+					  	<tr>
+					  		<th>Descriptif</th>
+								<td>{{ form_row(edit_form.prodDesc) }}</td>
+					  	</tr>
+					</table>
+				<h6>* champs obligatoires</h6>
+			  <form action="" method="GET"  class="categorie" class="button">
+						<input href="{{ path('product_edit', { 'id': product.prodId }) }}" class="btn" type="submit" action="edit" value="Valider"/>
+				</form>
+		{{ form_end(edit_form) }}
+		<br />
+		{{ form_start(delete_form) }}
+				<br />
+				<input type="submit" value="Delete">
+		{{ form_end(delete_form) }}
+						<p value="Annuler"><span class="glyphicon glyphicon-remove"> Annuler</span></p>
+		</article>
 {% endblock %}
