@@ -59,6 +59,7 @@
     <div class="collapse" id="demo">
 
     <form action="{{ path('product_index') }}" method="GET" id="cat" class="categorie">
+          <button href="{{ path('product_index') }}" form="cat" class="cat-nav" value="all" name="prod_cat">Tout voir</button>
           <button href="{{ path('product_index') }}" type="submit" class="cat-nav" value="vetements" name="prod_cat">Vêtements</button>
           <button href="{{ path('product_index') }}" type="submit" class="cat-nav" value="deguisements" name="prod_cat">Déguisements</button>
           <button href="{{ path('product_index') }}" type="submit" class="cat-nav" value="jeux" name="prod_cat">Jeux Vidéos</button>

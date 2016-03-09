@@ -5,12 +5,17 @@
 
 {# -- titre page -- #}
 
-{% block title_page %}<h1>{{ product.prodName }}</h1>{% endblock %}
+{% block title_page %}<h1>{{ product.prodCat }}</h1><h2><span class="glyphicon glyphicon-menu-right"></span>{{ product.prodName }}</h2>{% endblock %}
 
 {# -- contenu page -- #}
 
 {% block main %}
 
+<form action="{{ path('product_index') }}" method="GET" id="cat" class="categorie">
+			<button href="{{ path('product_index') }}" form="cat" class="cat-nav" value="all" name="prod_cat"><span class=" glyphicon glyphicon-triangle-left"></span> Retour à la liste de tous les produits</button>
+			<button href="{{ path('product_index') }}" form="cat" class="cat-nav" value="{{product.prodCat}}" name="prod_cat"><span class=" glyphicon glyphicon-triangle-left"></span> Retour à la liste de tous les produits</button>
+
+</form>
 
 {{ form_start(edit_form) }}
 
@@ -50,14 +55,11 @@
 						<tr>
 								<th>Quantité produit </th>
 			 				 <td>
-
 			 					{{ form_row(edit_form.prodQty) }}
 			 				 </td>
-							 
 			 				 <th>Etat du produit</th>
 			 				 <td>
 			 					{{ form_row(edit_form.prodState) }}
-
 							 </td>
 						</tr>
 					</table>
@@ -93,7 +95,7 @@
 					  		<h3>DESCRIPTIF</h3>
 					  	</caption>
 						<tr>
-							 <th>Nom de la photo : nomImage.extension (png/jpg)</th>
+							 <th>Nom de la photo : (png/jpg)</th>
 							 <td>
 
 
@@ -108,15 +110,16 @@
 					  	</tr>
 					</table>
 				<h6>* champs obligatoires</h6>
-			  <form action="" method="GET"  class="categorie" class="button">
+	<div id="button">
+			  <form action="" method="GET"   class="categorie">
 						<input href="{{ path('product_edit', { 'id': product.prodId }) }}" class="btn" type="submit" action="edit" value="Valider"/>
 				</form>
 		{{ form_end(edit_form) }}
-		<br />
+
 		{{ form_start(delete_form) }}
-				<br />
-				<input type="submit" value="Delete">
+				<input class="btn" type="submit" value="Supprimer">
 		{{ form_end(delete_form) }}
 						<p value="Annuler"><span class="glyphicon glyphicon-remove"> Annuler</span></p>
+		</div>
 		</article>
 {% endblock %}
