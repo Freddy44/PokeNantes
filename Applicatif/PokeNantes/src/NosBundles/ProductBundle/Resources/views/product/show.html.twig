@@ -4,12 +4,11 @@
 {% block title %}Liste Catégorie{% endblock %}
 
 {# -- titre page -- #}
-{% block title_page %}<h1></h1>{% endblock %}
+{% block title_page %}<h1>{{ categorie }}</h1>{% endblock %}
 
 {# -- contenu page -- #}
 {% block main %}
 <article>
-{% for product in products %}
 <div class="container">
 	<div>
 			<ul>
@@ -20,15 +19,15 @@
 	</div>
 </div>
 <article id="listeCat">
+{% for product in products %}
 		<div class="liste">
 		<h3>
 		<a href="{{ path('product_edit', { 'id': product.prodId }) }}">
 			{{ product.prodName }}
 		</h3>
 		<div class="buttonListeCat">
-				<a href="{{ path('product_edit', { 'id': product.prodId }) }}" class="edit"><img  src="{{ asset('bundles/frameworkPoke/img/pictos/edit.png')}}"/></a>
-				<a href="{{ path('product_delete', { 'id': product.prodId }) }}" class="remove"><img src="{{ asset('bundles/frameworkPoke/img/pictos/remove.png')}}"/></a>
-
+			<input href="{{ path('product_new') }}" class="btn" type="submit" action="edit" value="Edit"/>
+			<input type="submit" href="{{ path('product_delete', { 'id': product.prodId }) }}" action="delete" class="remove" value="Supprimer"/>
 		</div>
 			<span>
 				<img src="{{ asset('bundles/frameworkPoke/img/imgbase.png')}}"/>
@@ -41,8 +40,12 @@
 			{% if product.prodQty != 0 %}
 					<div>
 							<ul>
-									<li><b>Quantité neuf : </b>{{ product.prodQty }}</li>
-									<li><b>Quantité occasion : </b></li>
+									<li><b>Quantité : </b>{{ product.prodQty }}</li>
+									{% if product.prodState == 'O' %}
+										<li><b>État du produit : </b>Occasion</li>
+									{% else %}
+										<li><b>État du produit : </b>Neuf</li>
+									{% endif %}
 							</ul>
 					</div>
 			{% else %}
@@ -61,9 +64,9 @@
 			{% if product.prodQtyDefect != 0 %}
 					<div>
 						<img src="{{ asset('bundles/frameworkPoke/img/pictos/mentionspe.png')}}"/>
-						<p>En rupture de stock</p>
+						<p>Produits défectueux</p>
 						<ul>
-							<li><b>Quantité produit défectueux  : </b>{{ product.prodQtyDefect }}</li>
+							<li><b>Quantité : </b>{{ product.prodQtyDefect }}</li>
 						</ul>
 					</div>
 			{% endif %}

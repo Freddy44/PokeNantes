@@ -11,6 +11,7 @@
 
 {% block main %}
 {{ form_start(form) }}
+	<form>
 			<article id="newProduit">
 					<table>
 						<caption>
@@ -25,7 +26,7 @@
 					  	<tr>
 							<th>Catégorie du produit *</th>
 							<td>
-								{{ form_row(form.prodCat) }}
+						     {{ form_row(form.prodCat) }}
 							</td>
 					  	</tr>
 					  	<tr>
@@ -93,10 +94,9 @@
 					  	</tr>
 					</table>
 				<h6>* champs obligatoires</h6>
-				<div class="button">
-						<button href="{{ path('product_new') }}" class="btn" type="submit" action="edit" value="Edit"><span class="glyphicon glyphicon-ok"> Valider</span></button>
-						<a class="btn" value="Annuler" href="{{ path('product_index') }}"><span class="glyphicon glyphicon-remove"> Annuler</span></a>
-				</div>
-		</article>
+					  <input href="{{ path('product_new') }}" class="btn" type="submit" action="edit" value="Edit"/>
+						<p value="Annuler"><span class="glyphicon glyphicon-remove">Annuler</span></p>
+				</form>
 		{{ form_end(form) }}
+		</article>
 {% endblock %}

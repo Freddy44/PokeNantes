@@ -50,10 +50,12 @@ class ProductController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
-            return $this->redirectToRoute('product_new', array('id' => $product->getProdId()));
+
+            return $this->redirectToRoute('product_show', array('cat' => $product->getProdCat()));
         }
 
          return $this->render('NosBundlesProductBundle:product:new.html.twig', array(
@@ -70,6 +72,19 @@ class ProductController extends Controller
      */
     public function showAction($cat)
     {
+      //Tableau permettant de récupérer le libellé de la catégorie
+      $arrayCat = array(
+        "all" => "Liste des produits",
+        "vetements" => "Vêtements",
+        "deguisements" => "Déguisements",
+        "jeux" => "Jeux vidéos",
+        "livres" => "Livres",
+        "dvd" => "DVD",
+        "cd" => "CD",
+        "figurines" => "Figurines",
+        "cartes" => "Cartes de collection",
+        );
+      $categorie = $arrayCat[$cat];
       $em = $this->getDoctrine()->getManager();
       /* Si on reçoit un nom de catégorie valide alors on recherche les Films de cette catégorie uniquement */
       if ($cat !== 'all') {
@@ -82,7 +97,7 @@ class ProductController extends Controller
       }
 
       return $this->render('NosBundlesProductBundle:product:show.html.twig', array(
-            'products' => $products,
+            'products' => $products, 'categorie' => $categorie,
       ));
 
     }
@@ -95,11 +110,13 @@ class ProductController extends Controller
      */
     public function editAction(Request $request, Product $product)
     {
+        //var_dump($product);
         $deleteForm = $this->createDeleteForm($product);
         $editForm = $this->createForm('NosBundles\ProductBundle\Form\ProductType', $product);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
@@ -122,10 +139,12 @@ class ProductController extends Controller
      */
     public function deleteAction(Request $request, Product $product)
     {
+
         $form = $this->createDeleteForm($product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //die('delete submit');
             $em = $this->getDoctrine()->getManager();
             $em->remove($product);
             $em->flush();

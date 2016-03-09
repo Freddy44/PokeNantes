@@ -10,6 +10,7 @@
 {# -- contenu page -- #}
 
 {% block main %}
+{{ form_start(edit_form) }}
 			<article id="newProduit">
 					<table>
 						<caption>
@@ -18,31 +19,19 @@
 						<tr>
 							 <th>Nom du produit *</th>
 							 <td>
-							 	<input type="text" required="required" value="{{ product.prodName }}">
+							 	{{ form_row(edit_form.prodName) }}
 							 </td>
 						</tr>
 					  	<tr>
 							<th>Catégorie du produit *</th>
 							<td>
-								<form>
-									<select name="nom" size="1">
-									<option>{{ product.prodCat }}
-									<option>Vêtements
-									<option>Déguisements
-									<option>Jeux Vidéos
-								  <option>Livres
-									<option>DVD
-									<option>CD
-									<option>Figurines
-									<option>Cartes de Collection
-									</select>
-								</form>
+										{{ form_row(edit_form.prodCat) }}
 							</td>
 					  	</tr>
 					  	<tr>
 							<th>Référence du produit *</th>
 							<td>
-							 	<input type="text" required="required" value="{{ product.prodRef }}">
+							 	{{ form_row(edit_form.prodRef) }}
 							</td>
 						</tr>
 					</table>
@@ -54,11 +43,11 @@
 						<tr>
 								<th>Achats neufs</th>
 			 				 <td>
-			 					<input type="text" value="{{ product.prodQty }}">
+			 					{{ form_row(edit_form.prodQty) }}
 			 				 </td>
 			 				 <th>Etat du produit</th>
 			 				 <td>
-			 					<input type="text" value="{{ product.prodState }}">
+			 					{{ form_row(edit_form.prodState) }}
 							 </td>
 						</tr>
 					</table>
@@ -69,21 +58,8 @@
 					  	</caption>
 						<tr>
 							 <th>Nom du fournisseur *</th>
-							 <td>
-							 	<input type="text" required="required" value="{{ Provider.provName }}">
-							 </td>
+							 <td>{{ form_row(edit_form.ProvidersList) }}</td>
 						</tr>
-					  	<tr>
-							<th>Numéro de téléphone *</th>
-							<td>
-								<input type="text" required="required" value="{{ Provider.provPhone }}">
-							</td>
-					  	</tr>
-							<th>Type de fournisseur</th>
-							<td>
-								<input type="text" required="required" value="{{ product.prodState }}">
-							</td>
-							</tr>
 					</table>
 					{% endfor %}
 					<table>
@@ -93,7 +69,7 @@
 						<tr>
 							 <th>Total produits défaillants *</th>
 							 <td>
-							 	<input type="text" required="required" value="{{ product.prodQtyDefect }}">
+							 	{{ form_row(edit_form.prodQtyDefect) }}
 							 </td>
 						</tr>
 					</table>
@@ -105,21 +81,26 @@
 						<tr>
 							 <th>Nom de la photo (JPG/PNG) *</th>
 							 <td>
-							 	<input type="text" required="required" placeholder="nom de l'image" value="{{ product.prodPicture }}">
+
+								{{ form_row(edit_form.prodPicture) }}
 								<img src="{{ asset('bundles/frameworkPoke/img/')}}{{ product.prodPicture }}"/>
 							 </td>
 						</tr>
 					  	<tr>
 					  		<th>Descriptif</th>
-								<td><textarea value="{{ product.prodDesc }}">{{ product.prodDesc }}</textarea></td>
+								<td>{{ form_row(edit_form.prodDesc) }}</td>
 					  	</tr>
 					</table>
 				<h6>* champs obligatoires</h6>
-				<div class="button">
-					  <button href="{{ path('product_new') }}" class="btn" type="submit" action="edit" value="Edit"><span class="glyphicon glyphicon-ok"> Valider</span></button>
-						<button href="" class="btn" type="submit" action="delete" value="Delete"><span class="glyphicon glyphicon-trash"> Supprimer</span></button>
-						<a class="btn" value="Annuler" href="#"><span class="glyphicon glyphicon-remove"> Annuler</span></a>
-
-				</div>
+			  <form action="" method="GET"  class="categorie" class="button">
+						<input href="{{ path('product_edit', { 'id': product.prodId }) }}" class="btn" type="submit" action="edit" value="Valider"/>
+				</form>
+		{{ form_end(edit_form) }}
+		<br />
+		{{ form_start(delete_form) }}
+				<br />
+				<input type="submit" value="Delete">
+		{{ form_end(delete_form) }}
+						<p value="Annuler"><span class="glyphicon glyphicon-remove"> Annuler</span></p>
 		</article>
 {% endblock %}
