@@ -13,27 +13,35 @@
 			<ul>
 					<li><button target="all" class="cat-nav showall">Tous les produits</button></li>
 					<li><button target="rupture" type="button"  class="cat-nav show">En rupture de stock</button></li>
-					<li><button target="defaillant" type="button"  class="cat-nav show">Produits défaillants</button></li>
+					<li><button target="defaillant" type="button"  class="cat-nav show">Produits défectueux</button></li>
 			</ul>
 	</div>
 </div>
 <article id="listeCat">
 	{% for product in products %}
-{% if product.prodQtyDefect != 0 %}
+{% if product.prodQty == 0 %}
+ {% if product.prodQtyDefect != 0 %}
+	<div class="prodrupture proddefaillant prod">
+	{% else %}
+	<div class="prodrupture prod">
+	{% endif %}
+{% elseif product.prodQtyDefect != 0 %}
 <div class="proddefaillant prod">
-{% elseif product.prodQty == 0 %}
-<div class="prodrupture prod">
 {% else %}
 <div class="prod">
 {% endif %}
 		<div class="buttonListeCat">
 			<a href="{{ path('product_edit', {'id':product.prodId}) }}" class="btn" type="submit" action="edit" value="Détail">Détail</a>
-			<a href="{{ path('product_delete', {'id':product.prodId}) }}" class="btn" type="submit" action="delete" value="Supprimer">Supprimer</a>
+			<p value="Annuler"><span class="glyphicon glyphicon-remove"> Supprimer</a>
 		</div>
 		<!-- IMAGE -->
 		<div class="left">
 		<span>
-			<img src="{{ asset('bundles/frameworkPoke/img/imgbase.png')}}"/>
+			{% if product.prodPicture == "" %}
+					<img class="imgProd" src="{{ asset('bundles/frameworkPoke/img/imgbase.png')}}"/>
+			{% else %}
+					<img class="imgProd" src="{{ asset('bundles/frameworkPoke/img/')}}{{ product.prodPicture }}"/>
+			{% endif%}
 		</span>
 		</div>
 		<div class="right">
@@ -54,13 +62,8 @@
 				<div>
 						<ul>
 								<li><b>Quantité : </b>{{ product.prodQty }}</li>
-								<!-- IF OCCASION OU NEUF -->
-									{% if product.prodState == 'Occasion' %}
-										<li><b>État du produit : </b>Occasion</li>
-									{% else %}
-										<li><b>État du produit : </b>Neuf</li>
-									{% endif %}
-							</ul>
+								<li><b>État du produit : </b>{{ product.prodState }}</li>
+						</ul>
 					</div>
 			{% else %}
 
@@ -69,8 +72,14 @@
 							<li><p class="mentionspeciale"><img src="{{ asset('bundles/frameworkPoke/img/pictos/mentionspe.png')}}"/> En rupture de stock</p>
 						</ul>
 					</div>
+					{% if product.prodQtyDefect != 0 %}
+							<div>
+								<ul>
+									<li><p class="mentionspeciale"><img src="{{ asset('bundles/frameworkPoke/img/pictos/mentionspe.png')}}"/><b>Quantité produit Défectueux :</b> {{ product.prodQtyDefect }}</p></li>
+								</ul>
+							</div>
+					{% endif %}
 					{% for Provider in product.ProvidersList %}
-
 					<div>
 						<ul>
 							<li><b>Nom du fournisseur : </b>{{ Provider.provName }}</li>
@@ -80,8 +89,7 @@
 					</div>
 				{% endfor %}
 			{% endif %}
-			{% if product.prodQtyDefect != 0 %}
-
+			{% if product.prodQtyDefect != 0  and product.prodQty != 0 %}
 					<div>
 						<ul>
 							<li><p class="mentionspeciale"><img src="{{ asset('bundles/frameworkPoke/img/pictos/mentionspe.png')}}"/><b>Quantité produit Défectueux :</b> {{ product.prodQtyDefect }}</p></li>

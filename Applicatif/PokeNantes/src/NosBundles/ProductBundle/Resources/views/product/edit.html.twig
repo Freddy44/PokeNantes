@@ -48,11 +48,15 @@
 					  		<h3>QUANTITE</h3>
 					  	</caption>
 						<tr>
-								<th>Achats neufs</th>
+								<th>Quantité produit </th>
 			 				 <td>
 
 			 					{{ form_row(edit_form.prodQty) }}
 			 				 </td>
+							 <th>Quantité produit</th>
+							<td>
+							 {{ form_row(edit_form.prodQty) }}
+							</td>
 			 				 <th>Etat du produit</th>
 			 				 <td>
 			 					{{ form_row(edit_form.prodState) }}
@@ -92,13 +96,13 @@
 					  		<h3>DESCRIPTIF</h3>
 					  	</caption>
 						<tr>
-							 <th>Nom de la photo (JPG/PNG) *</th>
+							 <th>Nom de la photo : nomImage.extension (png/jpg)</th>
 							 <td>
 
 
 								{{ form_row(edit_form.prodPicture) }}
 
-								<img src="{{ asset('bundles/frameworkPoke/img/')}}{{ product.prodPicture }}"/>
+								<img class="imgProd" src="{{ asset('bundles/frameworkPoke/img/')}}{{ product.prodPicture }}"/>
 							 </td>
 						</tr>
 					  	<tr>
