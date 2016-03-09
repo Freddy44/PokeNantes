@@ -175,7 +175,9 @@ padding: 15px;
   text-decoration: none;
   text-align: center;
 }
-
+a:active, .cat-nat:active {
+  background: #1c0243;
+}
 .cat-nav:hover{
   background: #1c0243;
   background-image: -webkit-linear-gradient(top, #1c0243, #1c0243);
@@ -601,12 +603,16 @@ text-align: center;
   display: block;
   color:#efa10b;
 }
+#listeCat div h2 a:hover{
+  display: block;
+  color:#1c0243;
+}
 .mentionspeciale, .mentionspeciale-2{
   width: 300px;
   margin:0px;
 }
 .mentionspeciale img, .mentionspeciale-2 img{
-  padding: 2px;
+  vertical-align: sub;
 }
 .mentionspeciale{
   color: #efa10b;
@@ -629,11 +635,14 @@ b{
   padding-left: 5px;
   padding-right: 20px;
 }
-#listeCat img{
+.imgProd{
 padding-right: 1%;
 display: inline-block;
 float: left;
+width: 150px;
+border: 1px solid gainsboro;
 }
+
 .mentionspe{
   width: 30px;
 }
