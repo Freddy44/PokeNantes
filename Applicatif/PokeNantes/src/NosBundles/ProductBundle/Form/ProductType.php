@@ -28,11 +28,11 @@ class ProductType extends AbstractType
                                            'figurines' => 'Figurines',
                                            'cartes' => 'Cartes de collection',),
                                            'label'=>'Categorie de produit : '))
-            ->add('prodDesc','textarea',array('label'=>'Descriptif : '))
+            ->add('prodDesc','textarea',array('label'=>'Descriptif : ','required' => false))
 
             ->add('prodState', 'choice', array('choices' => array('Occasion'=>'Occasion','Neuf'=>'Neuf'),'label'=>'Etat : '))
 
-            ->add('prodPicture', 'text')
+            ->add('prodPicture', 'text',array('required' => false))
             ->add('prodQty', 'integer', array('label'=>'Quantite : '))
             ->add('prodQtyDefect', 'integer', array('label'=>'Quantite defectueuse: '))
             ->add('ProvidersList', 'entity', array(

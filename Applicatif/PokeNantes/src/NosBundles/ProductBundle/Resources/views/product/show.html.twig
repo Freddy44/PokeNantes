@@ -55,7 +55,7 @@
 						<ul>
 								<li><b>Quantité : </b>{{ product.prodQty }}</li>
 								<!-- IF OCCASION OU NEUF -->
-									{% if product.prodState == 'O' %}
+									{% if product.prodState == 'Occasion' %}
 										<li><b>État du produit : </b>Occasion</li>
 									{% else %}
 										<li><b>État du produit : </b>Neuf</li>
@@ -63,13 +63,15 @@
 							</ul>
 					</div>
 			{% else %}
-				{% for Provider in product.ProvidersList %}
+
 				 <div>
 						<ul>
 							<li><p class="mentionspeciale"><img src="{{ asset('bundles/frameworkPoke/img/pictos/mentionspe.png')}}"/> En rupture de stock</p>
 						</ul>
-					<div>
 					</div>
+					{% for Provider in product.ProvidersList %}
+
+					<div>
 						<ul>
 							<li><b>Nom du fournisseur : </b>{{ Provider.provName }}</li>
 								<!-- <li><b></b>{{ Provider.provType }}</li> -->
@@ -79,12 +81,13 @@
 				{% endfor %}
 			{% endif %}
 			{% if product.prodQtyDefect != 0 %}
-					{% for Provider in product.ProvidersList %}
+
 					<div>
 						<ul>
 							<li><p class="mentionspeciale"><img src="{{ asset('bundles/frameworkPoke/img/pictos/mentionspe.png')}}"/><b>Quantité produit Défectueux :</b> {{ product.prodQtyDefect }}</p></li>
 						</ul>
 					</div>
+					{% for Provider in product.ProvidersList %}
 					<div>
 						<ul>
 							<li><b>Nom du fournisseur : </b>{{ Provider.provName }}</li>
