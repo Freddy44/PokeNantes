@@ -34,9 +34,9 @@ class Provider
     protected $provType;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="prov_phone", type="integer", nullable=false)
+     * @ORM\Column(name="prov_phone", type="string", length=40, nullable=false)
      */
     protected $provPhone;
 
@@ -48,19 +48,19 @@ class Provider
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $provId;
-	
+
 	/**
 	 *
 	 * @return the string
 	 */
-	
+
     /**
      * Bidirectional
      *
      * @ORM\ManyToMany(targetEntity="Product", mappedBy="ProvidersList")
      */
     protected $ProductsList;
-	
+
     /**
      * Constructor
      */
@@ -68,11 +68,11 @@ class Provider
     {
     	$this->ProductsList = new \Doctrine\Common\Collections\ArrayCollection();
     }
-	
+
 	public function getProvRef() {
 		return $this->provRef;
 	}
-	
+
 	/**
 	 *
 	 * @param
@@ -82,7 +82,7 @@ class Provider
 		$this->provRef = $provRef;
 		return $this;
 	}
-	
+
 	/**
 	 *
 	 * @return the string
@@ -90,7 +90,7 @@ class Provider
 	public function getProvName() {
 		return $this->provName;
 	}
-	
+
 	/**
 	 *
 	 * @param
@@ -100,7 +100,7 @@ class Provider
 		$this->provName = $provName;
 		return $this;
 	}
-	
+
 	/**
 	 *
 	 * @return the string
@@ -108,7 +108,7 @@ class Provider
 	public function getProvType() {
 		return $this->provType;
 	}
-	
+
 	/**
 	 *
 	 * @param
@@ -118,7 +118,7 @@ class Provider
 		$this->provType = $provType;
 		return $this;
 	}
-	
+
 	/**
 	 *
 	 * @return the integer
@@ -126,7 +126,7 @@ class Provider
 	public function getProvPhone() {
 		return $this->provPhone;
 	}
-	
+
 	/**
 	 *
 	 * @param
@@ -136,7 +136,7 @@ class Provider
 		$this->provPhone = $provPhone;
 		return $this;
 	}
-	
+
 	/**
 	 *
 	 * @return the integer
@@ -144,7 +144,7 @@ class Provider
 	public function getProvId() {
 		return $this->provId;
 	}
-	
+
 	/**
 	 *
 	 * @param
@@ -154,9 +154,9 @@ class Provider
 		$this->provId = $provId;
 		return $this;
 	}
-	
 
-    
+
+
 
     /**
      * Add ProductsList
@@ -184,7 +184,7 @@ class Provider
     /**
      * Get ProductsList
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProductsList()
     {
