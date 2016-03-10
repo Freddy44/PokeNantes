@@ -34,9 +34,9 @@ class Provider
     protected $provType;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="prov_phone", type="integer", nullable=false)
+     * @ORM\Column(name="prov_phone", type="string", nullable=false)
      */
     protected $provPhone;
 

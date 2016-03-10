@@ -36,7 +36,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="prod_desc", type="string", length=250, nullable=false)
+     * @ORM\Column(name="prod_desc", type="string", length=250, nullable=true)
      */
     protected $prodDesc;
 
@@ -50,7 +50,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="prod_picture", type="string", length=250, nullable=false)
+     * @ORM\Column(name="prod_picture", type="string", length=250, nullable=true)
      */
     protected $prodPicture;
 
